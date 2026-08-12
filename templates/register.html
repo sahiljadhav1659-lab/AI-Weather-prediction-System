@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-6">
+
+<div class="glass-card p-5 fade-up">
+
+<div class="text-center mb-4">
+
+<div style="font-size:70px;">🤖</div>
+
+<h2 class="fw-bold text-primary">
+
+Create Account
+
+</h2>
+
+<p class="text-muted">
+
+Join AI Weather Prediction
+
+</p>
+
+</div>
+
+{% if error %}
+
+<div class="alert alert-danger">
+
+{{ error }}
+
+</div>
+
+{% endif %}
+
+<form method="POST">
+
+<div class="mb-3">
+
+<label class="fw-bold">
+
+👤 Full Name
+
+</label>
+
+<input
+type="text"
+name="full_name"
+class="form-control premium-input"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label class="fw-bold">
+
+📧 Email
+
+</label>
+
+<input
+type="email"
+name="email"
+class="form-control premium-input"
+required>
+
+</div>
+
+<div class="mb-4">
+
+<label class="fw-bold">
+
+🔒 Password
+
+</label>
+
+<input
+type="password"
+name="password"
+class="form-control premium-input"
+required>
+
+</div>
+
+<div class="d-grid">
+
+<button class="premium-btn">
+
+✨ Create Account
+
+</button>
+
+</div>
+
+</form>
+
+<hr>
+
+<div class="text-center">
+
+Already have an account?
+
+<a href="/login" class="fw-bold">
+
+Login
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,205 @@
+/* ==========================================
+   HISTORY PAGE
+========================================== */
+
+/* HEADER */
+
+.history-title{
+
+    font-size:58px;
+
+    font-weight:700;
+
+    color:#1565ff;
+
+}
+
+.history-subtitle{
+
+    font-size:20px;
+
+    color:#64748b;
+
+}
+
+/* CONTAINER */
+
+.history-card{
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:30px;
+
+    padding:35px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+
+}
+
+/* EXPORT BUTTON */
+
+.export-btn{
+
+    border-radius:16px;
+
+    padding:12px 28px;
+
+    font-weight:600;
+
+}
+
+/* TABLE */
+
+.history-table{
+
+    margin-top:20px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:white;
+
+}
+
+.history-table table{
+
+    margin:0;
+
+}
+
+.history-table thead{
+
+    background:linear-gradient(135deg,#1565ff,#42a5f5);
+
+    color:white;
+
+}
+
+.history-table thead th{
+
+    padding:18px;
+
+    border:none;
+
+    font-size:15px;
+
+    text-align:center;
+
+}
+
+.history-table tbody td{
+
+    text-align:center;
+
+    vertical-align:middle;
+
+    padding:18px;
+
+    border-color:#eef5ff;
+
+}
+
+.history-table tbody tr{
+
+    transition:.30s;
+
+}
+
+.history-table tbody tr:hover{
+
+    background:#eef7ff;
+
+}
+
+/* BADGES */
+
+.badge-rain{
+
+    background:#1976ff;
+
+    color:white;
+
+    padding:10px 16px;
+
+    border-radius:50px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.badge-sun{
+
+    background:#ffd54f;
+
+    color:#222;
+
+    padding:10px 16px;
+
+    border-radius:50px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+/* EMPTY */
+
+.empty-history{
+
+    text-align:center;
+
+    padding:60px;
+
+}
+
+.empty-history h2{
+
+    color:#1565ff;
+
+}
+
+.empty-history p{
+
+    color:#64748b;
+
+}
+
+/* TABLE HEADER */
+
+.table-title{
+
+    color:#1565ff;
+
+    font-weight:700;
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.history-title{
+
+font-size:42px;
+
+}
+
+.history-card{
+
+padding:20px;
+
+}
+
+.history-table{
+
+font-size:13px;
+
+}
+
+}

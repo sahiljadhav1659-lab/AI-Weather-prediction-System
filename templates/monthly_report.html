@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5 fade-up">
+
+    <div class="text-center mb-5">
+
+        <span class="premium-badge">
+            📅 MONTHLY WEATHER REPORT
+        </span>
+
+        <h1 class="page-title mt-3">
+            Monthly Climate Summary
+        </h1>
+
+        <p class="page-subtitle">
+            AI Generated Weather Statistics & Climate Overview
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-3 col-md-6">
+            <div class="stat-card">
+                <div class="stat-icon">🌡</div>
+                <h2>31°C</h2>
+                <p>Highest Temperature</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="stat-card">
+                <div class="stat-icon">❄</div>
+                <h2>18°C</h2>
+                <p>Lowest Temperature</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="stat-card">
+                <div class="stat-icon">🌧</div>
+                <h2>120 mm</h2>
+                <p>Total Rainfall</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="stat-card">
+                <div class="stat-icon">🌬</div>
+                <h2>24 km/h</h2>
+                <p>Average Wind Speed</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="glass-card mt-5 p-5">
+
+        <h3 class="mb-4">
+            📊 Monthly AI Analysis
+        </h3>
+
+        <p>
+
+            During this month, the AI Weather Prediction System analyzed weather
+            conditions including temperature, humidity, rainfall, and wind speed.
+
+            The Random Forest model maintained an overall prediction accuracy of
+            <strong>98.43%</strong>, providing reliable rainfall forecasting.
+
+        </p>
+
+        <hr>
+
+        <div class="row text-center">
+
+            <div class="col-md-4">
+
+                <h2>98.43%</h2>
+
+                <p>Model Accuracy</p>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h2>91,320</h2>
+
+                <p>Dataset Records</p>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h2>8</h2>
+
+                <p>Features Used</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,187 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+
+<div class="container py-5 fade-up">
+
+<div class="text-center mb-5">
+
+<span class="premium-badge">
+🛡 ADMIN CONTROL PANEL
+</span>
+
+<h1 class="page-title mt-3">
+WeatherAI Admin Dashboard
+</h1>
+
+<p class="page-subtitle">
+Manage Predictions • Reports • Analytics
+</p>
+
+</div>
+
+<!-- Statistics -->
+
+<div class="row g-4 mb-5">
+
+<div class="col-md-3">
+
+<div class="stat-card text-center">
+
+<h1>📊</h1>
+
+<h2>{{ total_predictions }}</h2>
+
+<p>Total Predictions</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="stat-card text-center">
+
+<h1>🤖</h1>
+
+<h2>98.43%</h2>
+
+<p>Accuracy</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="stat-card text-center">
+
+<h1>🌦</h1>
+
+<h2>8</h2>
+
+<p>Weather Features</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="stat-card text-center">
+
+<h1>📄</h1>
+
+<h2>AI</h2>
+
+<p>Reports Ready</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Table -->
+
+<div class="glass-card p-4">
+
+<h3 class="mb-4">
+📜 Latest Prediction Records
+</h3>
+
+<div class="table-responsive">
+
+<table class="table table-hover align-middle">
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Date</th>
+
+<th>City</th>
+
+<th>Temperature</th>
+
+<th>Prediction</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for row in records %}
+
+<tr>
+
+<td>{{ row[0] }}</td>
+
+<td>{{ row[1] }}</td>
+
+<td>{{ row[3] }}</td>
+
+<td>{{ row[4] }}°C</td>
+
+<td>
+
+{% if "Rain" in row[8] %}
+
+<span class="badge bg-primary p-2">
+
+🌧 {{ row[8] }}
+
+</span>
+
+{% else %}
+
+<span class="badge bg-warning text-dark p-2">
+
+☀ {{ row[8] }}
+
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="text-center mt-5">
+
+<a href="/admin/history" class="premium-btn me-3">
+
+📜 History
+
+</a>
+
+<a href="/admin/reports" class="premium-btn me-3">
+
+📄 Reports
+
+</a>
+
+<a href="/admin/logout" class="btn btn-danger btn-lg">
+
+Logout
+
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}

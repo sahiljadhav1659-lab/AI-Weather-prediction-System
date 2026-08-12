@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1 class="display-4 text-primary fw-bold">
+            🌤 About AI Weather Prediction
+        </h1>
+
+        <p class="lead text-muted">
+            An intelligent web application that predicts rainfall using Machine Learning
+            and displays live weather information.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-6">
+            <div class="card p-4 h-100">
+                <h3>🎯 Project Objective</h3>
+                <p>
+                    This system predicts rainfall using historical weather data
+                    and a Random Forest Machine Learning model.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card p-4 h-100">
+                <h3>🧠 Machine Learning</h3>
+                <ul>
+                    <li>Algorithm: <strong>Random Forest</strong></li>
+                    <li>Accuracy: <strong>98.43%</strong></li>
+                    <li>Features: <strong>8</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card p-4 h-100">
+                <h3>🛠 Technologies</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>Flask</li>
+                    <li>Pandas</li>
+                    <li>Scikit-learn</li>
+                    <li>Bootstrap 5</li>
+                    <li>HTML & CSS</li>
+                    <li>Open-Meteo API</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card p-4 h-100">
+                <h3>📊 Dataset</h3>
+                <ul>
+                    <li>Total Records: 91,320</li>
+                    <li>Historical Weather Dataset</li>
+                    <li>Data Cleaned & Preprocessed</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center mt-5">
+
+        <a href="/prediction" class="btn btn-primary btn-lg me-3">
+            🌧 Try Prediction
+        </a>
+
+        <a href="/dashboard" class="btn btn-success btn-lg">
+            📊 Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

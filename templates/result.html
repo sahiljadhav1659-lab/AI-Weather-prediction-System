@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5 fade-up">
+
+    <!-- Hero -->
+
+    <div class="text-center mb-5">
+
+        <span class="premium-badge">
+
+            🤖 AI WEATHER ANALYSIS COMPLETE
+
+        </span>
+
+        <h1 class="page-title mt-3">
+
+            Prediction Result
+
+        </h1>
+
+        <p class="page-subtitle">
+
+            Machine Learning has analyzed your weather data.
+
+        </p>
+
+    </div>
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-10">
+
+            <div class="glass-card p-5">
+
+                <div class="row align-items-center">
+
+                    <!-- Left -->
+
+                    <div class="col-md-5 text-center">
+
+                        {% if result == "🌧 Rain Expected" %}
+
+                            <div class="result-icon rain">
+                                🌧
+                            </div>
+
+                            <h2 class="text-primary mt-3">
+
+                                Rain Expected
+
+                            </h2>
+
+                        {% else %}
+
+                            <div class="result-icon sun">
+                                ☀
+                            </div>
+
+                            <h2 class="text-warning mt-3">
+
+                                No Rain Expected
+
+                            </h2>
+
+                        {% endif %}
+
+                    </div>
+
+                    <!-- Right -->
+
+                    <div class="col-md-7">
+
+                        <div class="analysis-card">
+
+                            <h3>
+
+                                🤖 AI Analysis
+
+                            </h3>
+
+                            <hr>
+
+                            <h5>
+
+                                Prediction
+
+                            </h5>
+
+                            <h2 class="text-primary">
+
+                                {{ result }}
+
+                            </h2>
+
+                            <br>
+
+                            <h5>
+
+                                Model Accuracy
+
+                            </h5>
+
+                            <div class="progress mb-4">
+
+                                <div
+                                class="progress-bar bg-success"
+                                style="width:98.43%;">
+
+                                    98.43%
+
+                                </div>
+
+                            </div>
+
+                            {% if "Rain" in result %}
+
+                            <div class="alert alert-primary">
+
+                                ☔ Carry an umbrella.<br>
+
+                                🌧 Rain is likely according to AI prediction.<br>
+
+                                🚗 Drive carefully.
+
+                            </div>
+
+                            {% else %}
+
+                            <div class="alert alert-warning">
+
+                                ☀ Weather looks clear.<br>
+
+                                😎 Good day for outdoor activities.<br>
+
+                                💧 Stay hydrated.
+
+                            </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <hr class="my-5">
+
+                <div class="row text-center">
+
+                    <div class="col-md-4">
+
+                        <div class="mini-card">
+
+                            <h2>98.43%</h2>
+
+                            <p>Accuracy</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="mini-card">
+
+                            <h2>Random Forest</h2>
+
+                            <p>Algorithm</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="mini-card">
+
+                            <h2>8</h2>
+
+                            <p>Features</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-5">
+
+                    <a href="/download_prediction_pdf"
+                       class="premium-btn me-3">
+
+                        📄 Download Report
+
+                    </a>
+
+                    <a href="/prediction"
+                       class="btn btn-outline-primary btn-lg">
+
+                        🔄 Predict Again
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

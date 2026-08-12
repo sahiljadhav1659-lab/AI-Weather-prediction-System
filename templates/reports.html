@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5 fade-up">
+
+    <!-- Hero -->
+    <div class="text-center mb-5">
+
+        <h1 class="dashboard-title">
+            📄 Reports Center
+        </h1>
+
+        <p class="dashboard-subtitle">
+            AI Weather Reports • Analytics • Downloads
+        </p>
+
+    </div>
+
+    <!-- Top Statistics -->
+    <div class="row g-4 mb-5">
+
+        <div class="col-md-3">
+            <div class="card text-center p-4">
+                <h2>📄</h2>
+                <h3>08</h3>
+                <p>Total Reports</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center p-4">
+                <h2>📥</h2>
+                <h3>124</h3>
+                <p>Downloads</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center p-4">
+                <h2>📊</h2>
+                <h3>98.43%</h3>
+                <p>Model Accuracy</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center p-4">
+                <h2>🤖</h2>
+                <h3>Random Forest</h3>
+                <p>AI Engine</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Report Cards -->
+
+    <div class="row g-4">
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card p-4 h-100 text-center">
+
+                <div style="font-size:55px;">🌧</div>
+
+                <h4 class="mt-3">Prediction</h4>
+
+                <p>Create AI Weather Prediction Reports</p>
+
+                <a href="/prediction" class="btn btn-primary w-100">
+                    ➜ Open
+                </a>
+
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card p-4 h-100 text-center">
+
+                <div style="font-size:55px;">📜</div>
+
+                <h4 class="mt-3">History</h4>
+
+                <p>Browse Previous Predictions</p>
+
+                <a href="/history" class="btn btn-primary w-100">
+                    ➜ Open
+                </a>
+
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card p-4 h-100 text-center">
+
+                <div style="font-size:55px;">🌍</div>
+
+                <h4 class="mt-3">Live Weather</h4>
+
+                <p>Current Weather Dashboard</p>
+
+                <a href="/dashboard" class="btn btn-primary w-100">
+                    ➜ Open
+                </a>
+
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card p-4 h-100 text-center">
+
+                <div style="font-size:55px;">📊</div>
+
+                <h4 class="mt-3">Analytics</h4>
+
+                <p>Graphs & Machine Learning Charts</p>
+
+                <a href="/dashboard" class="btn btn-primary w-100">
+                    ➜ View
+                </a>
+
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card p-4 h-100 text-center">
+
+                <div style="font-size:55px;">📅</div>
+
+                <h4 class="mt-3">Monthly Report</h4>
+
+                <p>Monthly Weather Summary</p>
+
+                <a href="/monthly-report" class="btn btn-primary w-100">
+                    ➜ Open
+                </a>
+
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card p-4 h-100 text-center">
+
+                <div style="font-size:55px;">📄</div>
+
+                <h4 class="mt-3">Prediction PDF</h4>
+
+                <p>Latest AI Report</p>
+
+                <a href="/download_prediction_pdf" class="btn btn-danger w-100">
+                    ⬇ Download
+                </a>
+
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card p-4 h-100 text-center">
+
+                <div style="font-size:55px;">📑</div>
+
+                <h4 class="mt-3">History PDF</h4>
+
+                <p>Complete Prediction History</p>
+
+                <a href="/history_pdf" class="btn btn-warning w-100">
+                    ⬇ Download
+                </a>
+
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card p-4 h-100 text-center">
+
+                <div style="font-size:55px;">📈</div>
+
+                <h4 class="mt-3">Export CSV</h4>
+
+                <p>Export Prediction Database</p>
+
+                <a href="/export_csv" class="btn btn-success w-100">
+                    ⬇ Export
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

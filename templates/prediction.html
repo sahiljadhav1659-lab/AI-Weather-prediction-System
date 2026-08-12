@@ -1,0 +1,563 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="container py-5 fade-up">
+
+    <!-- Hero -->
+
+    <div class="text-center mb-5">
+
+        <span class="premium-badge">
+            🤖 AI WEATHER ENGINE
+        </span>
+
+        <h1 class="page-title mt-3">
+            Weather Prediction
+        </h1>
+
+        <p class="page-subtitle">
+            Predict rainfall using Artificial Intelligence and Machine Learning
+        </p>
+
+    </div>
+
+</div>
+
+    <div class="row">
+
+        <!-- Left -->
+
+        <div class="col-lg-4 mb-4">
+
+            <div class="weather-card h-100 p-4">
+
+                <h3 class="text-white mb-4">
+                    🌤 AI Prediction
+                </h3>
+
+                <div class="text-center">
+
+                    <div style="font-size:90px;">
+                        🤖
+                    </div>
+
+                    <h2 class="text-white mt-3">
+                        Random Forest
+                    </h2>
+
+                    <p class="text-light">
+
+                        Accuracy
+
+                    </p>
+
+                    <h1 style="color:#00e5ff;">
+                        98.43%
+                    </h1>
+
+                </div>
+
+                <hr>
+
+                <ul class="list-unstyled text-light">
+
+                    <li>✅ Machine Learning</li>
+                    <li>✅ Rainfall Prediction</li>
+                    <li>✅ Weather Analysis</li>
+                    <li>✅ PDF Report</li>
+                    <li>✅ History Storage</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- Right -->
+
+        <div class="col-lg-8">
+
+            <div class="glass-card p-5">
+
+                <form action="/predict" method="POST">
+
+                    <div class="row g-4">
+
+                        <div class="col-md-6">
+
+                            <label class="form-label fw-bold">
+
+                                🌡 Max Temperature
+
+                            </label>
+
+                            <input
+                            type="number"
+                            step="0.1"
+                            name="temperature_2m_max"
+                            class="form-control premium-input"
+                            required>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label fw-bold">
+
+                                ❄ Min Temperature
+
+                            </label>
+
+                            <input
+                            type="number"
+                            step="0.1"
+                            name="temperature_2m_min"
+                            class="form-control premium-input"
+                            required>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label fw-bold">
+
+                                🌡 Apparent Max
+
+                            </label>
+
+                            <input
+                            type="number"
+                            step="0.1"
+                            name="apparent_temperature_max"
+                            class="form-control premium-input"
+                            required>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label fw-bold">
+
+                                🌡 Apparent Min
+
+                            </label>
+
+                            <input
+                            type="number"
+                            step="0.1"
+                            name="apparent_temperature_min"
+                            class="form-control premium-input"
+                            required>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label fw-bold">
+
+                                🌧 Rainfall
+
+                            </label>
+
+                            <input
+                            type="number"
+                            step="0.1"
+                            name="precipitation_sum"
+                            class="form-control premium-input"
+                            required>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label fw-bold">
+
+                                💨 Wind Speed
+
+                            </label>
+
+                            <input
+                            type="number"
+                            step="0.1"
+                            name="wind_speed_10m_max"
+                            class="form-control premium-input"
+                            required>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label fw-bold">
+
+                                🌪 Wind Gust
+
+                            </label>
+
+                            <input
+                            type="number"
+                            step="0.1"
+                            name="wind_gusts_10m_max"
+                            class="form-control premium-input"
+                            required>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="form-label fw-bold">
+
+                                ☁ Weather Code
+
+                            </label>
+
+                            <input
+                            type="number"
+                            name="weather_code"
+                            class="form-control premium-input"
+                            required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="text-center mt-5">
+
+                        <button class="premium-btn">
+
+                            🚀 Predict Weather
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+let locationWatchId = null;
+let bestPosition = null;
+
+function detectLiveWeather() {
+
+    const status = document.getElementById("autoStatus");
+    const button = document.getElementById("detectButton");
+    const locationBox = document.getElementById("autoLocation");
+    const coordinates = document.getElementById("locationCoordinates");
+
+    if (!navigator.geolocation) {
+
+        status.className = "alert alert-danger mt-4";
+
+        status.innerHTML =
+            "❌ Your browser does not support location detection.";
+
+        return;
+    }
+
+    bestPosition = null;
+
+    status.className = "alert alert-info mt-4";
+
+    status.innerHTML =
+        "📍 Searching for your most accurate location...";
+
+    button.disabled = true;
+
+    button.innerHTML =
+        "📡 Finding location...";
+
+
+    locationWatchId =
+        navigator.geolocation.watchPosition(
+
+            function(position) {
+
+                const accuracy =
+                    position.coords.accuracy;
+
+                console.log(
+                    "GPS accuracy:",
+                    accuracy,
+                    "meters"
+                );
+
+
+                // Keep the most accurate reading
+                if (
+                    bestPosition === null ||
+                    accuracy < bestPosition.coords.accuracy
+                ) {
+
+                    bestPosition = position;
+
+                    locationBox.style.display = "block";
+
+                    coordinates.innerHTML =
+                        "Latitude: " +
+                        position.coords.latitude.toFixed(6) +
+                        "<br>" +
+                        "Longitude: " +
+                        position.coords.longitude.toFixed(6) +
+                        "<br>" +
+                        "GPS Accuracy: approximately " +
+                        Math.round(accuracy) +
+                        " meters";
+
+
+                    // Good accuracy
+                    if (accuracy <= 50) {
+
+                        status.className =
+                            "alert alert-success mt-4";
+
+                        status.innerHTML =
+                            "✅ Good location accuracy obtained.";
+
+                        stopLocationTracking();
+
+                        sendLocationToServer(
+                            bestPosition
+                        );
+
+                    }
+
+                    else {
+
+                        status.className =
+                            "alert alert-info mt-4";
+
+                        status.innerHTML =
+                            "📍 Improving location accuracy... " +
+                            Math.round(accuracy) +
+                            " meters";
+                    }
+                }
+
+            },
+
+            function(error) {
+
+                stopLocationTracking();
+
+                button.disabled = false;
+
+                button.innerHTML =
+                    "📍 Try Again";
+
+                status.className =
+                    "alert alert-danger mt-4";
+
+
+                if (error.code === 1) {
+
+                    status.innerHTML =
+                        "❌ Location permission denied. Please allow location access.";
+
+                }
+
+                else if (error.code === 2) {
+
+                    status.innerHTML =
+                        "❌ Location information unavailable.";
+
+                }
+
+                else if (error.code === 3) {
+
+                    status.innerHTML =
+                        "❌ Location request timed out.";
+
+                }
+
+                else {
+
+                    status.innerHTML =
+                        "❌ Unable to detect location.";
+
+                }
+
+            },
+
+            {
+                enableHighAccuracy: true,
+                timeout: 30000,
+                maximumAge: 0
+            }
+        );
+}
+
+
+function stopLocationTracking() {
+
+    if (locationWatchId !== null) {
+
+        navigator.geolocation.clearWatch(
+            locationWatchId
+        );
+
+        locationWatchId = null;
+    }
+}
+
+
+function sendLocationToServer(position) {
+
+    const status =
+        document.getElementById("autoStatus");
+
+    const button =
+        document.getElementById("detectButton");
+
+    const latitude =
+        position.coords.latitude;
+
+    const longitude =
+        position.coords.longitude;
+
+
+    status.className =
+        "alert alert-info mt-4";
+
+    status.innerHTML =
+        "🌤 Getting weather information...";
+
+
+    fetch("/auto_predict", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+            latitude: latitude,
+            longitude: longitude
+
+        })
+
+    })
+
+    .then(function(response) {
+
+        return response.json();
+
+    })
+
+    .then(function(data) {
+
+        button.disabled = false;
+
+        button.innerHTML =
+            "🔄 Detect Again";
+
+
+        if (data.error) {
+
+            status.className =
+                "alert alert-danger mt-4";
+
+            status.innerHTML =
+                "❌ " + data.error;
+
+            return;
+        }
+
+
+        status.className =
+            "alert alert-success mt-4";
+
+        status.innerHTML =
+            "✅ Automatic prediction completed!";
+
+
+        document.getElementById(
+            "autoResult"
+        ).style.display = "block";
+
+
+        if (data.prediction == 1) {
+
+            document.getElementById(
+                "autoIcon"
+            ).innerHTML = "🌧️";
+
+            document.getElementById(
+                "autoPrediction"
+            ).innerHTML =
+                "Rain Expected";
+
+            document.getElementById(
+                "autoMessage"
+            ).innerHTML =
+                "🤖 AI predicts rainfall based on your detected location.";
+
+        }
+
+        else {
+
+            document.getElementById(
+                "autoIcon"
+            ).innerHTML = "☀️";
+
+            document.getElementById(
+                "autoPrediction"
+            ).innerHTML =
+                "No Rain Expected";
+
+            document.getElementById(
+                "autoMessage"
+            ).innerHTML =
+                "🤖 AI predicts no rainfall based on your detected location.";
+
+        }
+
+    })
+
+    .catch(function(error) {
+
+        console.error(
+            "Automatic prediction error:",
+            error
+        );
+
+        status.className =
+            "alert alert-danger mt-4";
+
+        status.innerHTML =
+            "❌ Unable to get automatic prediction.";
+
+        button.disabled = false;
+
+        button.innerHTML =
+            "📍 Try Again";
+
+    });
+}
+
+
+// Automatically detect location
+// when page opens
+
+window.addEventListener(
+    "load",
+    function() {
+
+        detectLiveWeather();
+
+    }
+);
+
+</script>
+
+{% endblock %}

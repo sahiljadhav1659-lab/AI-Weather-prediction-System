@@ -1,0 +1,215 @@
+/* ==========================================
+   AI WEATHER PREDICTION
+   ANIMATIONS
+========================================== */
+
+/* BODY */body{
+
+opacity:0;
+
+transition:opacity .25s ease;
+
+}
+
+body.loaded{
+
+opacity:1;
+
+}
+
+body{
+    opacity:0;
+    animation:bodyFade .45s forwards;
+}
+
+@keyframes bodyFade{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+/* PAGE FADE UP */
+
+.fade-up{
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* CARD ENTRY */
+
+.card{
+
+    opacity:0;
+    transform:translateY(35px);
+    animation:cardFade .8s forwards;
+
+}
+
+.card:nth-child(1){animation-delay:.10s;}
+.card:nth-child(2){animation-delay:.20s;}
+.card:nth-child(3){animation-delay:.30s;}
+.card:nth-child(4){animation-delay:.40s;}
+.card:nth-child(5){animation-delay:.50s;}
+.card:nth-child(6){animation-delay:.60s;}
+
+@keyframes cardFade{
+
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* LIVE DOT */
+
+.live-dot{
+
+    width:12px;
+    height:12px;
+
+    background:#22c55e;
+
+    display:inline-block;
+
+    border-radius:50%;
+
+    margin-right:8px;
+
+    animation:pulse 1.2s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    50%{
+        transform:scale(1.8);
+        opacity:.4;
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+
+/* FLOATING ICON */
+
+.result-icon{
+
+    animation:floatIcon 3s ease-in-out infinite;
+
+}
+
+@keyframes floatIcon{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+/* BUTTONS */
+
+.btn,
+.premium-btn{
+
+    transition:.35s;
+
+}
+
+.btn:hover,
+.premium-btn:hover{
+
+    transform:translateY(-4px) scale(1.03);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+
+}
+
+/* IMAGES */
+
+img{
+
+    transition:.45s;
+
+}
+
+img:hover{
+
+    transform:scale(1.03);
+
+}
+
+/* INPUTS */
+
+.form-control,
+.form-select{
+
+    transition:.30s;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    transform:scale(1.02);
+
+}
+
+/* TABLE */
+
+.table tbody tr{
+
+    transition:.25s;
+
+}
+
+.table tbody tr:hover{
+
+    transform:scale(1.01);
+
+}
+
+/* LINKS */
+
+a{
+
+    transition:.30s;
+
+}

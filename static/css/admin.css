@@ -1,0 +1,261 @@
+/* ==========================================
+   ADMIN DASHBOARD
+========================================== */
+
+/* HERO */
+
+.admin-header{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+.admin-title{
+
+    font-size:58px;
+
+    font-weight:700;
+
+    color:#1565ff;
+
+}
+
+.admin-subtitle{
+
+    font-size:20px;
+
+    color:#64748b;
+
+}
+
+.admin-badge{
+
+    display:inline-block;
+
+    padding:12px 28px;
+
+    border-radius:50px;
+
+    background:#dbeafe;
+
+    color:#1565ff;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+/* KPI CARDS */
+
+.admin-stat{
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:28px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.10);
+
+    transition:.35s;
+
+    height:100%;
+
+}
+
+.admin-stat:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 30px 60px rgba(21,101,255,.20);
+
+}
+
+.admin-stat h1{
+
+    font-size:60px;
+
+}
+
+.admin-stat h2{
+
+    color:#1565ff;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    margin-top:10px;
+
+}
+
+.admin-stat p{
+
+    color:#64748b;
+
+    margin-top:10px;
+
+}
+
+/* TABLE */
+
+.admin-table{
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:28px;
+
+    padding:30px;
+
+    margin-top:40px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.10);
+
+}
+
+.admin-table h3{
+
+    color:#1565ff;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+
+}
+
+.admin-table table{
+
+    margin-bottom:0;
+
+}
+
+.admin-table thead{
+
+    background:linear-gradient(135deg,#1565ff,#42a5f5);
+
+    color:white;
+
+}
+
+.admin-table th{
+
+    padding:16px;
+
+    border:none;
+
+    text-align:center;
+
+}
+
+.admin-table td{
+
+    text-align:center;
+
+    vertical-align:middle;
+
+    padding:16px;
+
+}
+
+.admin-table tbody tr{
+
+    transition:.30s;
+
+}
+
+.admin-table tbody tr:hover{
+
+    background:#eef7ff;
+
+}
+
+/* BADGES */
+
+.badge-rain{
+
+    background:#1976ff;
+
+    color:white;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+}
+
+.badge-sun{
+
+    background:#ffd54f;
+
+    color:#222;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+}
+
+/* BUTTONS */
+
+.admin-actions{
+
+    text-align:center;
+
+    margin-top:50px;
+
+}
+
+.admin-actions .btn,
+
+.admin-actions .premium-btn{
+
+    min-width:180px;
+
+    margin:10px;
+
+    border-radius:18px;
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.admin-title{
+
+font-size:42px;
+
+}
+
+.admin-stat{
+
+padding:25px;
+
+}
+
+.admin-table{
+
+padding:20px;
+
+}
+
+.admin-table table{
+
+font-size:13px;
+
+}
+
+}

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="text-center text-primary mb-4">
+        📝 Prediction History
+    </h1>
+
+    <p class="text-center text-muted mb-4">
+        View all AI weather predictions stored in the database.
+    </p>
+
+    <div class="text-end mb-3">
+        <a href="{{ url_for('export_csv') }}" class="btn btn-success">
+            📊 Export CSV
+        </a>
+    </div>
+
+    <div class="card shadow-lg">
+
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Prediction Records</h4>
+        </div>
+
+        <div class="card-body">
+
+            {% if records %}
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped table-hover">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>City</th>
+                            <th>Temperature (°C)</th>
+                            <th>Humidity (%)</th>
+                            <th>Wind Speed (km/h)</th>
+                            <th>Rainfall (mm)</th>
+                            <th>Prediction</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for row in records %}
+
+                        <tr>
+
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                            <td>{{ row[4] }}</td>
+                            <td>{{ row[5] }}</td>
+                            <td>{{ row[6] }}</td>
+                            <td>{{ row[7] }}</td>
+
+                            <td>
+                                {% if "Rain" in row[8] %}
+                                    <span class="badge bg-primary">
+                                        {{ row[8] }}
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-warning text-dark">
+                                        {{ row[8] }}
+                                    </span>
+                                {% endif %}
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            {% else %}
+
+            <div class="alert alert-info text-center">
+                No prediction history found.
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

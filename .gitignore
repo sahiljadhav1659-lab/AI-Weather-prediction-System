@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Secrets
+.env
+*.env
+
+# Database
+database/
+
+# Generated files
+predictions.csv
+graphs/
+reports/*.pdf
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+# Generated reports
+static/reports/*.pdf
