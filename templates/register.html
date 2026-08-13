@@ -12,18 +12,14 @@
 
 <div class="text-center mb-4">
 
-<div style="font-size:70px;">🤖</div>
+<i class="bi bi-person-plus-fill" style="font-size:56px; color:var(--primary);"></i>
 
-<h2 class="fw-bold text-primary">
-
-Create Account
-
+<h2 class="fw-bold" style="color:var(--primary);">
+    Create Account
 </h2>
 
 <p class="text-muted">
-
-Join AI Weather Prediction
-
+    Join AI Weather Prediction
 </p>
 
 </div>
@@ -31,9 +27,7 @@ Join AI Weather Prediction
 {% if error %}
 
 <div class="alert alert-danger">
-
-{{ error }}
-
+    {{ error }}
 </div>
 
 {% endif %}
@@ -41,61 +35,24 @@ Join AI Weather Prediction
 <form method="POST">
 
 <div class="mb-3">
-
-<label class="fw-bold">
-
-👤 Full Name
-
-</label>
-
-<input
-type="text"
-name="full_name"
-class="form-control premium-input"
-required>
-
+    <label class="fw-bold"><i class="bi bi-person"></i> Full Name</label>
+    <input type="text" name="full_name" class="form-control premium-input" required>
 </div>
 
 <div class="mb-3">
-
-<label class="fw-bold">
-
-📧 Email
-
-</label>
-
-<input
-type="email"
-name="email"
-class="form-control premium-input"
-required>
-
+    <label class="fw-bold"><i class="bi bi-envelope"></i> Email</label>
+    <input type="email" name="email" class="form-control premium-input" required>
 </div>
 
 <div class="mb-4">
-
-<label class="fw-bold">
-
-🔒 Password
-
-</label>
-
-<input
-type="password"
-name="password"
-class="form-control premium-input"
-required>
-
+    <label class="fw-bold"><i class="bi bi-lock"></i> Password</label>
+    <input type="password" name="password" class="form-control premium-input" required>
 </div>
 
 <div class="d-grid">
-
-<button class="premium-btn">
-
-✨ Create Account
-
-</button>
-
+    <button class="premium-btn">
+        <i class="bi bi-stars"></i> Create Account
+    </button>
 </div>
 
 </form>
@@ -103,15 +60,8 @@ required>
 <hr>
 
 <div class="text-center">
-
-Already have an account?
-
-<a href="/login" class="fw-bold">
-
-Login
-
-</a>
-
+    Already have an account?
+    <a href="/login" class="fw-bold" style="color:var(--primary);">Login</a>
 </div>
 
 </div>

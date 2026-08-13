@@ -1,721 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
+{% block content %}
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="container-fluid py-5">
 
-<title>Weather Prediction AI</title>
+    <div class="row align-items-center" style="max-width:1200px; margin:0 auto;">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- LEFT -->
+        <div class="col-lg-6 mb-5 mb-lg-0">
 
-<style>
+            <span class="premium-badge">
+                <i class="bi bi-cpu"></i> AI WEATHER PLATFORM
+            </span>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
-body{
+            <h1 class="page-title mt-3" style="line-height:1.1;">
+                Weather<br>
+                <span style="color:var(--primary);">Forecast</span>
+            </h1>
 
-background:linear-gradient(-45deg,
-#0f172a,
-#1e3a8a,
-#2563eb,
-#0f172a);
+            <p class="page-subtitle" style="max-width:480px;">
+                Predict rainfall, monitor live weather, generate reports
+                and visualize climate trends with Artificial Intelligence.
+            </p>
 
-background-size:400% 400%;
+            <div class="mt-4 d-flex gap-3">
 
-animation:gradientMove 15s ease infinite;
+                <a href="/prediction" class="btn btn-primary btn-lg">
+                    <i class="bi bi-cloud-rain"></i> Predict Weather
+                </a>
 
-min-height:100vh;
+                <a href="/dashboard" class="btn btn-outline-primary btn-lg">
+                    <i class="bi bi-bar-chart-line"></i> Dashboard
+                </a>
 
-overflow-x:hidden;
+            </div>
 
-color:white;
-
-}
-
-/* NAVBAR */
-.navbar{
-
-width:92%;
-
-margin:25px auto;
-
-padding:18px 35px;
-
-border-radius:22px;
-
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(18px);
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-box-shadow:0 10px 30px rgba(0,0,0,.25);
-
-}
-
-.navbar-brand{
-
-font-size:30px;
-
-font-weight:700;
-
-text-decoration:none;
-
-color:white;
-
-}
-
-.nav-center{
-
-display:flex;
-
-gap:35px;
-
-}
-
-.nav-center a{
-
-color:white;
-
-text-decoration:none;
-
-font-size:17px;
-
-opacity:.8;
-
-transition:.3s;
-
-}
-
-.nav-center a:hover{
-
-opacity:1;
-
-color:#38bdf8;
-
-}
-
-.login-btn{
-
-background:linear-gradient(90deg,#38bdf8,#2563eb);
-
-padding:12px 28px;
-
-border-radius:12px;
-
-text-decoration:none;
-
-color:white;
-
-font-weight:600;
-
-transition:.3s;
-
-}
-
-.login-btn:hover{
-
-transform:translateY(-4px);
-
-}
-/* HERO */
-.hero{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:60px 80px;
-
-min-height:80vh;
-
-animation:fadeUp 1.2s ease;
-
-}
-.hero-tag{
-
-display:inline-block;
-
-padding:10px 20px;
-
-background:rgba(255,255,255,.08);
-
-border-radius:30px;
-
-margin-bottom:25px;
-
-font-size:14px;
-
-letter-spacing:2px;
-
-backdrop-filter:blur(10px);
-
-}
-
-.hero-title{
-
-font-size:78px;
-
-font-weight:700;
-
-line-height:1.05;
-
-margin-bottom:25px;
-
-}
-
-.hero-title span{
-
-display:block;
-
-background:linear-gradient(90deg,#38bdf8,#60a5fa,#818cf8);
-
--webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
-
-background-clip:text;
-
-}
-
-.hero-desc{
-
-font-size:18px;
-
-color:#cbd5e1;
-
-width:85%;
-
-line-height:1.8;
-
-}
-
-.hero-buttons{
-
-margin-top:40px;
-
-}
-
-/* LEFT */
-
-.left{
-
-width:55%;
-
-}
-
-
-.left p{
-
-font-size:20px;
-
-color:#cbd5e1;
-
-line-height:1.7;
-
-}
-
-/* BUTTONS */
-
-.buttons{
-
-margin-top:40px;
-
-}
-
-.btn1{
-
-background:linear-gradient(90deg,#38bdf8,#2563eb);
-
-padding:16px 38px;
-
-border-radius:16px;
-
-color:white;
-
-font-size:18px;
-
-font-weight:600;
-
-text-decoration:none;
-
-display:inline-block;
-
-transition:.35s;
-
-box-shadow:0 10px 30px rgba(37,99,235,.45);
-
-}
-
-
-
-.btn1:hover{
-
-background:#2563eb;
-
-transform:translateY(-5px);
-
-}
-.btn2{
-
-background:rgba(255,255,255,.08);
-
-border:1px solid rgba(255,255,255,.25);
-
-backdrop-filter:blur(20px);
-
-padding:16px 38px;
-
-border-radius:16px;
-
-text-decoration:none;
-
-color:white;
-
-font-size:18px;
-
-display:inline-block;
-
-transition:.35s;
-
-}
-
-.btn2:hover{
-
-background:white;
-
-color:#0f172a;
-
-transform:translateY(-6px);
-
-}
-/* WEATHER CARD */
-
-.card-weather{
-
-width:430px;
-
-padding:35px;
-
-border-radius:35px;
-
-background:rgba(255,255,255,.10);
-
-backdrop-filter:blur(30px);
-
-border:1px solid rgba(255,255,255,.15);
-
-box-shadow:0 25px 60px rgba(0,0,0,.35);
-
-}
-
-.weather-top{
-
-text-align:center;
-
-margin-bottom:35px;
-
-}
-
-.weather-icon{
-
-font-size:90px;
-
-margin-bottom:10px;
-
-animation:floatIcon 4s ease-in-out infinite;
-
-}
-
-.temp{
-
-font-size:78px;
-
-font-weight:700;
-
-line-height:1;
-
-}
-
-.city{
-
-font-size:28px;
-
-margin-top:12px;
-
-}
-
-.condition{
-
-font-size:18px;
-
-color:#cbd5e1;
-
-margin-top:10px;
-
-}
-
-.weather-info{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:18px;
-
-margin-top:30px;
-
-}
-
-.info-box{
-
-background:rgba(255,255,255,.06);
-
-padding:18px;
-
-border-radius:20px;
-
-text-align:center;
-
-}
-
-.info-box span{
-
-display:block;
-
-font-size:24px;
-
-font-weight:700;
-
-margin:10px 0;
-
-}
-
-.info-box small{
-
-color:#cbd5e1;
-
-}
-
-.weather-row:last-child{
-
-border-bottom:none;
-
-}
-
-/* Floating Clouds */
-
-.cloud{
-
-position:absolute;
-
-font-size:150px;
-
-opacity:.05;
-
-animation:moveCloud 30s linear infinite;
-
-}
-
-.cloud1{
-
-top:80px;
-
-left:-150px;
-
-}
-
-.cloud2{
-
-bottom:50px;
-
-right:-150px;
-
-animation-duration:40s;
-
-}
-
-@keyframes moveCloud{
-
-0%{
-
-transform:translateX(0);
-
-}
-
-100%{
-
-transform:translateX(1700px);
-
-}
-
-}
-@keyframes gradientMove{
-
-0%{
-background-position:0% 50%;
-}
-
-50%{
-background-position:100% 50%;
-}
-
-100%{
-background-position:0% 50%;
-}
-
-}
-@keyframes fadeUp{
-
-0%{
-
-opacity:0;
-
-transform:translateY(60px);
-
-}
-
-100%{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-.floating{
-
-position:absolute;
-
-font-size:45px;
-
-opacity:.18;
-
-pointer-events:none;
-
-animation:float 8s ease-in-out infinite;
-
-}
-
-.sun{
-
-top:12%;
-
-right:12%;
-
-}
-
-.cloud{
-
-top:55%;
-
-left:8%;
-
-animation-delay:2s;
-
-}
-
-.rain{
-
-bottom:12%;
-
-left:15%;
-
-animation-delay:4s;
-
-}
-
-.snow{
-
-top:28%;
-
-right:30%;
-
-animation-delay:6s;
-
-}
-
-@keyframes float{
-
-0%{
-
-transform:translateY(0px);
-
-}
-
-50%{
-
-transform:translateY(-25px);
-
-}
-
-100%{
-
-transform:translateY(0px);
-
-}
-
-}
-@keyframes floatIcon{
-
-0%{
-transform:translateY(0);
-}
-
-50%{
-transform:translateY(-10px);
-}
-
-100%{
-transform:translateY(0);
-}
-
-}
-</style>
-
-</head>
-
-<body>
-
-<div class="cloud cloud1">☁</div>
-<div class="cloud cloud2">☁</div>
-<nav class="navbar">
-
-    <a class="navbar-brand" href="/">
-        🌤 WeatherAI
-    </a>
-
-    <div class="nav-center">
-
-        <a href="/">Home</a>
-
-        <a href="/dashboard">Dashboard</a>
-
-        <a href="/prediction">Prediction</a>
-
-        <a href="/reports">Reports</a>
-
-    </div>
-
-    <div class="nav-right">
-
-        <a href="/login" class="login-btn">
-            Login
-        </a>
-
-    </div>
-
-</nav>
-<section class="hero">
-
-    <div class="left">
-
-        <div class="hero-tag">
-            AI WEATHER PLATFORM
         </div>
 
-        <h1 class="hero-title">
-            Weather
-            <span>Forecast</span>
-        </h1>
+        <!-- RIGHT -->
+        <div class="col-lg-6">
 
-        <p class="hero-desc">
-            Predict rainfall, monitor live weather,
-            generate reports and visualize climate trends
-            with Artificial Intelligence.
-        </p>
+            <div class="card p-4">
 
-        <div class="hero-buttons">
+                <div class="text-center mb-4">
 
-            <a href="/prediction" class="btn1">
-                🌦 Predict Weather
-            </a>
+                    <div class="data-readout" style="font-size:56px;">
+                        {{ weather.icon }}
+                    </div>
 
-            <a href="/dashboard" class="btn2">
-                📊 Dashboard
-            </a>
+                    <div class="data-readout" style="font-size:52px;">
+                        {{ weather.temperature }}°
+                    </div>
+
+                    <div class="mt-2">
+                        <i class="bi bi-geo-alt-fill"></i> {{ city }}
+                    </div>
+
+                    <p class="text-muted">{{ weather.condition }}</p>
+
+                </div>
+
+                <div class="row g-3 text-center">
+
+                    <div class="col-6">
+                        <div class="stat-card p-3">
+                            <i class="bi bi-droplet-half"></i>
+                            <div class="data-readout">{{ weather.humidity }}%</div>
+                            <small class="text-muted">Humidity</small>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="stat-card p-3">
+                            <i class="bi bi-wind"></i>
+                            <div class="data-readout">{{ weather.wind_speed }} km/h</div>
+                            <small class="text-muted">Wind</small>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="stat-card p-3">
+                            <i class="bi bi-cloud-rain"></i>
+                            <div class="data-readout">{{ weather.rainfall }} mm</div>
+                            <small class="text-muted">Rain</small>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="stat-card p-3">
+                            <i class="bi bi-clock"></i>
+                            <div class="data-readout">{{ weather.time }}</div>
+                            <small class="text-muted">Updated</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
-
-    <div class="card-weather">
-
-
-<div class="weather-top">
-
-<div class="weather-icon">
-{{ weather.icon }}
 </div>
 
-<div class="temp">
-{{ weather.temperature }}°
-</div>
-
-<div class="city">
-📍 {{ city }}
-</div>
-
-<div class="condition">
-{{ weather.condition }}
-</div>
-
-</div>
-
-<div class="weather-info">
-
-<div class="info-box">
-💧
-<span>{{ weather.humidity }}%</span>
-<small>Humidity</small>
-</div>
-
-<div class="info-box">
-🌬
-<span>{{ weather.wind_speed }} km/h</span>
-<small>Wind</small>
-</div>
-
-<div class="info-box">
-🌧
-<span>{{ weather.rainfall }} mm</span>
-<small>Rain</small>
-</div>
-
-<div class="info-box">
-🕒
-<span>{{ weather.time }}</span>
-<small>Updated</small>
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-    
-</section>
-<div class="floating sun">☀️</div>
-
-<div class="floating cloud">☁️</div>
-
-<div class="floating rain">🌧️</div>
-
-<div class="floating snow">❄️</div>
-</body>
-</html>
+{% endblock %}

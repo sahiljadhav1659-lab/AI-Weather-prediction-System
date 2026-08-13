@@ -1,0 +1,107 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <span class="premium-badge">🌦 WEATHER ANALYTICS</span>
+        <h1 class="page-title mt-3">Temperature Reports</h1>
+        <p class="page-subtitle">Daily, weekly and monthly weather statistics.</p>
+    </div>
+
+    <!-- MONTHLY -->
+    <div class="glass-card p-4 mb-5">
+        <h3 class="mb-4">📅 Monthly Report (Avg / Highest / Lowest)</h3>
+
+        {% if monthly_stats %}
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Average Temp (°C)</th>
+                        <th>Highest Temp (°C)</th>
+                        <th>Lowest Temp (°C)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for month, stats in monthly_stats.items() %}
+                    <tr>
+                        <td>{{ month }}</td>
+                        <td>{{ stats.avg }}</td>
+                        <td class="text-danger">{{ stats.highest }}</td>
+                        <td class="text-primary">{{ stats.lowest }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info text-center">No data available yet.</div>
+        {% endif %}
+    </div>
+
+    <!-- WEEKLY -->
+    <div class="glass-card p-4 mb-5">
+        <h3 class="mb-4">🗓 Weekly Average Temperature</h3>
+
+        {% if weekly_avg %}
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>Week</th>
+                        <th>Average Temp (°C)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for week, avg in weekly_avg.items() %}
+                    <tr>
+                        <td>{{ week }}</td>
+                        <td>{{ avg }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info text-center">No data available yet.</div>
+        {% endif %}
+    </div>
+
+    <!-- DAILY -->
+    <div class="glass-card p-4 mb-5">
+        <h3 class="mb-4">📆 Daily Average Temperature</h3>
+
+        {% if daily_avg %}
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Average Temp (°C)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for date, avg in daily_avg.items() %}
+                    <tr>
+                        <td>{{ date }}</td>
+                        <td>{{ avg }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info text-center">No data available yet.</div>
+        {% endif %}
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="/admin/reports" class="btn btn-dark btn-lg">⬅ Back to Reports</a>
+    </div>
+
+</div>
+
+{% endblock %}

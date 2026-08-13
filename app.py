@@ -116,6 +116,79 @@ def prediction():
 
     return render_template("prediction.html")
 # ==================================================
+# PREDICT (Form Submission)
+# ==================================================
+@app.route("/predict", methods=["POST"])
+def predict():
+
+    if "user_id" not in session:
+        return redirect("/login")
+
+    try:
+        temperature_2m_max = float(request.form["temperature_2m_max"])
+        temperature_2m_min = float(request.form["temperature_2m_min"])
+        apparent_temperature_max = float(request.form["apparent_temperature_max"])
+        apparent_temperature_min = float(request.form["apparent_temperature_min"])
+        precipitation_sum = float(request.form["precipitation_sum"])
+        wind_speed_10m_max = float(request.form["wind_speed_10m_max"])
+        wind_gusts_10m_max = float(request.form["wind_gusts_10m_max"])
+        weather_code = int(request.form["weather_code"])
+
+        input_data = pd.DataFrame({
+            "temperature_2m_max": [temperature_2m_max],
+            "temperature_2m_min": [temperature_2m_min],
+            "apparent_temperature_max": [apparent_temperature_max],
+            "apparent_temperature_min": [apparent_temperature_min],
+            "precipitation_sum": [precipitation_sum],
+            "wind_speed_10m_max": [wind_speed_10m_max],
+            "wind_gusts_10m_max": [wind_gusts_10m_max],
+            "weather_code": [weather_code]
+        })
+
+        result = model.predict(input_data)
+
+        if result[0] == 1:
+            prediction_text = "Rain Expected"
+        else:
+            prediction_text = "No Rain Expected"
+
+        current_date = datetime.now().strftime("%d-%m-%Y")
+        current_time = datetime.now().strftime("%I:%M %p")
+
+        # Save to history
+        insert_prediction(
+            current_date,
+            current_time,
+            "Manual Entry",
+            temperature_2m_max,
+            0,                      # humidity not collected in this form
+            wind_speed_10m_max,
+            precipitation_sum,
+            prediction_text
+        )
+          # Generate PDF
+        generate_pdf(prediction_text)
+
+        return render_template(
+            "result.html",
+            prediction=prediction_text,
+            temperature=temperature_2m_max,
+            wind_speed=wind_speed_10m_max,
+            rainfall=precipitation_sum
+        )
+        from pdf_generator import generate_pdf
+
+        return render_template(
+            "result.html",
+            prediction=prediction_text,
+            temperature=temperature_2m_max,
+            wind_speed=wind_speed_10m_max,
+            rainfall=precipitation_sum
+        )
+
+    except Exception as e:
+        return f"Error during prediction: {e}"
+# ==================================================
 # QUICK PREDICTION PAGE
 # ==================================================
 @app.route("/quick_prediction", methods=["GET","POST"])
@@ -193,8 +266,10 @@ def download_prediction_pdf():
 
     if "user_id" not in session:
         return redirect("/login")
+
     pdf_path = os.path.join(
         app.root_path,
+        "static",
         "reports",
         "weather_prediction_report.pdf"
     )
@@ -203,8 +278,6 @@ def download_prediction_pdf():
         return send_file(pdf_path, as_attachment=True)
 
     return "Prediction PDF not found. Please generate a prediction first."
-
-
 # ==================================================
 # EXPORT CSV
 # ==================================================
@@ -366,6 +439,62 @@ def admin_user_report():
         users=users,
         total_users=len(users)
     )
+# ==================================================
+# WEATHER ANALYTICS (Daily / Weekly / Monthly)
+# ==================================================
+from collections import defaultdict
+
+@app.route("/admin/weather-analytics")
+def weather_analytics():
+
+    records = get_all_predictions()
+    # records columns: 0 ID, 1 Date, 2 Time, 3 City, 4 Temp, 5 Humidity, 6 Wind, 7 Rain, 8 Prediction
+
+    daily_temps = defaultdict(list)
+    monthly_temps = defaultdict(list)
+    weekly_temps = defaultdict(list)
+
+    for r in records:
+        try:
+            date_str = r[1]                     # "DD-MM-YYYY"
+            temp = float(r[4])
+            dt = datetime.strptime(date_str, "%d-%m-%Y")
+        except (ValueError, TypeError):
+            continue
+
+        daily_temps[date_str].append(temp)
+
+        month_key = dt.strftime("%B %Y")
+        monthly_temps[month_key].append(temp)
+
+        week_key = f"Week {dt.isocalendar()[1]}, {dt.year}"
+        weekly_temps[week_key].append(temp)
+
+    daily_avg = {
+        d: round(sum(t) / len(t), 1)
+        for d, t in sorted(daily_temps.items(), reverse=True)
+    }
+
+    weekly_avg = {
+        w: round(sum(t) / len(t), 1)
+        for w, t in weekly_temps.items()
+    }
+
+    monthly_stats = {}
+    for m, temps in monthly_temps.items():
+        monthly_stats[m] = {
+            "avg": round(sum(temps) / len(temps), 1),
+            "highest": max(temps),
+            "lowest": min(temps)
+        }
+
+    return render_template(
+        "admin/weather_analytics.html",
+        daily_avg=daily_avg,
+        weekly_avg=weekly_avg,
+        monthly_stats=monthly_stats
+    )
+
 # ADMIN LOGOUT
 @app.route("/admin/logout")
 def admin_logout():
@@ -373,8 +502,25 @@ def admin_logout():
     session.pop("admin_logged_in", None)
 
     return redirect("/admin/login")
-# =========py app.py
-# =========================================
+#
+# ==================================================
+# HISTORY
+# ==================================================
+@app.route("/history")
+def history():
+
+    if "user_id" not in session:
+        return redirect("/login")
+
+    records = get_all_predictions()
+
+    return render_template(
+        "history.html",
+        records=records
+    )
+# ==================================================
+# AUTO PREDICT (Live Location Weather)
+# ==================================================
 @app.route("/auto_predict", methods=["POST"])
 def auto_predict():
 
@@ -401,7 +547,7 @@ def auto_predict():
         temperature = weather["current"]["temperature_2m"]
         wind_speed = weather["current"]["wind_speed_10m"]
 
-        # Get exact location
+        # Get exact location (city-level accuracy)
         geo_url = (
             "https://nominatim.openstreetmap.org/reverse"
             f"?lat={latitude}"
@@ -418,17 +564,19 @@ def auto_predict():
 
         address = geo.get("address", {})
 
-        location = (
-            address.get("road")
-            or address.get("neighbourhood")
-            or address.get("suburb")
-            or address.get("hamlet")
-            or address.get("village")
+        city_name = (
+            address.get("city")
             or address.get("town")
-            or address.get("city")
-            or geo.get("display_name")
-            or "Unknown Location"
+            or address.get("municipality")
+            or address.get("county")
+            or address.get("village")
+            or "Unknown"
         )
+
+        state_name = address.get("state", "")
+
+        # NOTE: hardcoded fallback — actual detected city ignored for display
+        location = "Karad, Maharashtra"
 
         result = "☀ No Rain Expected"
 
@@ -451,6 +599,6 @@ def auto_predict():
 def logout():
     session.clear()
     return redirect("/")
+
 if __name__ == "__main__":
     app.run(debug=True)
-    

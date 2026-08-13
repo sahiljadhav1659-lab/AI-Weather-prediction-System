@@ -1,58 +1,45 @@
 /* ==========================================
    AI WEATHER PREDICTION SYSTEM
-   GLOBAL STYLES
+   GLOBAL STYLES — "Atmospheric Glass" Design System
 ========================================== */
-/* ==========================
-   NAVBAR TOGGLER
-========================== */
 
-.navbar-toggler{
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600;700&display=swap');
 
-    border:1px solid rgba(255,255,255,.4);
-
-}
-
-.navbar-toggler:focus{
-
-    box-shadow:none;
-
-}
-
-.navbar-toggler-icon{
-
-    filter:invert(1);
-
-}
 :root{
 
-    --primary:#2563eb;
-    --secondary:#4facfe;
-    --success:#22c55e;
-    --warning:#ffd54f;
-    --danger:#ef4444;
+    --primary:#FF6B35;
+    --primary-dark:#E8531E;
+    --secondary:#4A90D9;
+    --success:#3DDC97;
+    --warning:#FFB020;
+    --danger:#FF5C5C;
 
     --white:#ffffff;
 
-    --text:#1f2937;
-    --text-light:#64748b;
+    --glass-bg:rgba(22,26,38,.55);
+    --glass-bg-light:rgba(255,255,255,.08);
 
-    --glass:rgba(255,255,255,.75);
+    --text:#F4F6F9;
+    --text-muted:rgba(244,246,249,.65);
 
-    --shadow:0 15px 35px rgba(0,0,0,.12);
+    --border:rgba(255,255,255,.12);
 
-    --radius:22px;
+    --shadow-sm:0 4px 20px rgba(0,0,0,.25);
+    --shadow-md:0 10px 40px rgba(0,0,0,.35);
+
+    --radius:20px;
+
+    --font-heading:'Sora',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-data:'JetBrains Mono',monospace;
 
 }
-
-/* ==========================
-   RESET
-========================== */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+    font-family:var(--font-body);
 }
 
 html{
@@ -62,17 +49,9 @@ html{
 body{
 
     background:
-    radial-gradient(circle at top left,#dbeafe 0%,transparent 35%),
-    radial-gradient(circle at bottom right,#bfdbfe 0%,transparent 35%),
-    linear-gradient(135deg,#eef5ff,#dcecff,#eef5ff);
-
-    background-attachment:f.main-content{
-
-    min-height:80vh;
-
-    padding:30px 0;
-
-}ixed;
+        linear-gradient(rgba(20,15,30,.55), rgba(30,20,25,.65)),
+        url('https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?auto=format&fit=crop&w=1920&q=80')
+        center/cover no-repeat fixed;
 
     color:var(--text);
 
@@ -80,25 +59,59 @@ body{
 
 }
 
+h1,h2,h3,h4,h5,h6{
+    font-family:var(--font-heading);
+    color:var(--text);
+    font-weight:700;
+}
+
+p, span, label, small, td, th, li{
+    color:var(--text);
+}
+
+.text-muted{
+    color:var(--text-muted)!important;
+}
+
 /* ==========================
    NAVBAR
 ========================== */
 
+.navbar-toggler{
+    border:1px solid rgba(255,255,255,.3);
+}
+
+.navbar-toggler:focus{
+    box-shadow:none;
+}
+
+.navbar-toggler-icon{
+    filter:invert(1);
+}
+
 .navbar{
 
-    background:linear-gradient(90deg,var(--primary),var(--secondary));
+    background:rgba(15,12,25,.55);
 
-    padding:15px 30px;
+    backdrop-filter:blur(20px);
 
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    -webkit-backdrop-filter:blur(20px);
+
+    padding:16px 30px;
+
+    box-shadow:var(--shadow-sm);
+
+    border-bottom:1px solid var(--border);
 
 }
 
 .navbar-brand{
 
-    color:white!important;
+    color:var(--white)!important;
 
-    font-size:30px;
+    font-family:var(--font-heading);
+
+    font-size:26px;
 
     font-weight:700;
 
@@ -106,19 +119,19 @@ body{
 
 .nav-link{
 
-    color:white!important;
+    color:rgba(255,255,255,.85)!important;
 
-    font-weight:600;
+    font-weight:500;
 
     margin-left:18px;
 
-    transition:.3s;
+    transition:.2s;
 
 }
 
 .nav-link:hover{
 
-    color:var(--warning)!important;
+    color:var(--primary)!important;
 
 }
 
@@ -129,21 +142,46 @@ body{
 .page-title,
 .dashboard-title{
 
-    font-size:55px;
+    font-family:var(--font-heading);
 
-    font-weight:700;
+    font-size:42px;
 
-    color:var(--primary);
+    font-weight:800;
+
+    color:var(--white);
 
 }
 
 .page-subtitle,
 .dashboard-subtitle{
 
-    font-size:20px;
+    font-size:17px;
 
-    color:var(--text-light);
+    color:var(--text-muted);
 
+}
+
+/* Eyebrow with orange dot marker (OpenWeather signature) */
+.eyebrow{
+
+    font-family:var(--font-body);
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+    letter-spacing:.03em;
+
+    color:var(--text-muted);
+
+}
+
+.eyebrow::before{
+    content:"●";
+    color:var(--primary);
+    margin-right:6px;
+    font-size:.6rem;
+    vertical-align:middle;
 }
 
 /* ==========================
@@ -159,20 +197,72 @@ body{
 }
 
 /* ==========================
-   GLOBAL CARD
+   GLOBAL CARD — Frosted Glass
 ========================== */
 
-.card{
+.card,
+.stat-card,
+.ai-card,
+.glass-card,
+.weather-card,
+.graph-card{
 
-    background:var(--glass);
+    background:var(--glass-bg);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:blur(24px);
 
-    border:none;
+    -webkit-backdrop-filter:blur(24px);
+
+    border:1px solid var(--border);
 
     border-radius:var(--radius);
 
-    box-shadow:var(--shadow);
+    box-shadow:var(--shadow-sm);
+
+    transition:box-shadow .25s ease, transform .25s ease;
+
+    color:var(--text);
+
+}
+
+.card:hover,
+.stat-card:hover,
+.graph-card:hover{
+
+    box-shadow:var(--shadow-md);
+
+    transform:translateY(-3px);
+
+}
+
+/* Inner sub-stat boxes (like OpenWeather's Wind/Humidity/UV row) */
+.stat-card{
+
+    background:var(--glass-bg-light);
+
+}
+
+/* Data readouts — large bold white numbers */
+.data-readout,
+.stat-card h3,
+.ai-card h1,
+.ai-card h3,
+.weather-card h1{
+
+    font-family:var(--font-heading);
+
+    font-weight:800;
+
+    color:var(--white);
+
+}
+
+/* Thin divider like the reference design */
+hr{
+
+    border-color:var(--border);
+
+    opacity:1;
 
 }
 
@@ -182,7 +272,9 @@ body{
 
 .btn{
 
-    border-radius:14px;
+    border-radius:24px;
+
+    font-family:var(--font-heading);
 
     font-weight:600;
 
@@ -190,79 +282,180 @@ body{
 
 .btn-primary{
 
-    background:linear-gradient(90deg,var(--primary),var(--secondary));
+    background:var(--primary);
 
-    border:none;
+    border:1px solid var(--primary);
+
+    color:white;
 
 }
 
 .btn-primary:hover{
 
-    background:linear-gradient(90deg,#1d4ed8,#3b82f6);
+    background:var(--primary-dark);
+
+    border-color:var(--primary-dark);
+
+}
+
+.btn-outline-primary{
+
+    color:var(--white);
+
+    border:1px solid var(--border);
+
+    background:var(--glass-bg-light);
+
+}
+
+.btn-outline-primary:hover{
+
+    background:var(--primary);
+
+    border-color:var(--primary);
+
+    color:white;
 
 }
 
 /* ==========================
-   FORMS
+   FORMS — pill-style like search bar in reference
 ========================== */
 
 .form-control,
-.form-select{
+.form-select,
+.premium-input{
 
-    height:55px;
+    height:54px;
 
-    border-radius:15px;
+    border-radius:27px;
 
-    border:2px solid #dbeafe;
+    border:1px solid var(--border);
+
+    background:var(--glass-bg-light);
+
+    color:var(--text);
+
+    font-family:var(--font-body);
+
+    padding:0 22px;
 
 }
 
+.form-control::placeholder{
+    color:var(--text-muted);
+}
+
 .form-control:focus,
-.form-select:focus{
+.form-select:focus,
+.premium-input:focus{
+
+    background:var(--glass-bg-light);
+
+    color:var(--text);
 
     border-color:var(--primary);
 
-    box-shadow:0 0 15px rgba(37,99,235,.20);
+    box-shadow:0 0 0 3px rgba(255,107,53,.18);
 
+}
+
+.premium-btn{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:27px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-family:var(--font-heading);
+
+    font-weight:700;
+
+    font-size:16px;
+
+    transition:.25s;
+
+}
+
+.premium-btn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+.premium-badge{
+
+    display:inline-block;
+
+    padding:7px 18px;
+
+    border-radius:20px;
+
+    background:var(--glass-bg-light);
+
+    border:1px solid var(--border);
+
+    color:var(--white);
+
+    font-family:var(--font-body);
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+}
+
+.premium-badge::before{
+    content:"● ";
+    color:var(--primary);
 }
 
 /* ==========================
    DROPDOWN
 ========================== */
 
-.user-profile{
-
-    display:flex;
-
-    align-items:center;
-
-}
-
 .dropdown-menu{
 
-    border:none;
+    background:rgba(20,18,32,.9);
 
-    border-radius:20px;
+    backdrop-filter:blur(20px);
 
-    box-shadow:0 15px 35px rgba(0,0,0,.15);
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    box-shadow:var(--shadow-md);
 
 }
 
 .dropdown-item{
 
-    padding:12px 18px;
+    color:var(--text);
 
-    border-radius:12px;
+    padding:10px 16px;
 
-    transition:.25s;
+    border-radius:10px;
+
+    transition:.2s;
 
 }
 
 .dropdown-item:hover{
 
-    background:#eef5ff;
+    background:var(--glass-bg-light);
 
-    padding-left:24px;
+    color:var(--primary);
+
+    padding-left:20px;
 
 }
 
@@ -272,20 +465,72 @@ body{
 
 .table{
 
-    background:white;
+    background:var(--glass-bg);
 
-    border-radius:18px;
+    backdrop-filter:blur(20px);
+
+    border-radius:16px;
 
     overflow:hidden;
+
+    font-family:var(--font-body);
+
+    color:var(--text);
 
 }
 
 .table thead{
 
-    background:var(--primary);
+    background:rgba(255,107,53,.15);
 
-    color:white;
+    color:var(--white);
 
+    font-family:var(--font-heading);
+
+}
+
+.table td, .table th{
+
+    border-color:var(--border)!important;
+
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>*{
+
+    background:rgba(255,255,255,.03);
+
+    color:var(--text);
+
+}
+
+.table-hover>tbody>tr:hover>*{
+
+    background:rgba(255,107,53,.08);
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   ALERTS
+========================== */
+
+.alert-danger{
+    background:rgba(255,92,92,.15);
+    border:1px solid var(--danger);
+    color:#FF9B9B;
+}
+
+.alert-success{
+    background:rgba(61,220,151,.15);
+    border:1px solid var(--success);
+    color:var(--success);
+}
+
+.alert-info{
+    background:rgba(74,144,217,.15);
+    border:1px solid var(--secondary);
+    color:var(--secondary);
 }
 
 /* ==========================
@@ -296,13 +541,17 @@ footer{
 
     margin-top:70px;
 
-    background:linear-gradient(90deg,var(--primary),var(--secondary));
+    background:rgba(15,12,25,.6);
 
-    color:white;
+    backdrop-filter:blur(20px);
+
+    border-top:1px solid var(--border);
+
+    color:var(--text-muted);
 
     text-align:center;
 
-    padding:28px;
+    padding:26px;
 
 }
 
@@ -312,7 +561,7 @@ footer{
 
 ::-webkit-scrollbar{
 
-    width:10px;
+    width:9px;
 
 }
 
@@ -326,6 +575,42 @@ footer{
 
 ::-webkit-scrollbar-track{
 
-    background:#eef5ff;
+    background:transparent;
+
+}
+/* ==========================
+   FORM LABELS — visibility fix
+========================== */
+
+.form-label,
+label{
+
+    color:var(--text)!important;
+
+    font-weight:600;
+
+}
+
+/* Ensure inputs never fall back to browser white */
+.form-control,
+.form-select,
+.premium-input{
+
+    background:var(--glass-bg-light)!important;
+
+    color:var(--text)!important;
+
+}
+
+/* Autofill fix (Chrome forces white bg on autofilled fields) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus{
+
+    -webkit-text-fill-color:var(--text);
+
+    -webkit-box-shadow:0 0 0px 1000px var(--glass-bg-light) inset;
+
+    transition:background-color 9999s ease-in-out 0s;
 
 }

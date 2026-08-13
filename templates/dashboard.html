@@ -9,7 +9,7 @@
     <div class="text-center mb-5 fade-up">
 
         <h1 class="dashboard-title">
-            🌤 Weather Dashboard
+            <i class="bi bi-cloud-sun"></i> Weather Dashboard
         </h1>
 
         <p class="dashboard-subtitle">
@@ -17,194 +17,95 @@
         </p>
 
         <h6 class="mt-3 text-secondary">
-
-            📅 {{ current_date }}
-
+            <i class="bi bi-calendar3"></i> {{ current_date }}
             &nbsp;&nbsp;|&nbsp;&nbsp;
-
-            🕒 {{ current_time }}
-
+            <i class="bi bi-clock"></i> {{ current_time }}
         </h6>
 
     </div>
 
-    <!-- WEATHER + AI -->
+    <!-- AI -->
 
     <div class="row g-4 mb-5">
 
-        <!-- WEATHER -->
+        <div class="col-lg-12">
 
-        <div class="col-lg-8">
+            <div class="ai-card h-100">
 
-<div class="weather-card">
-                <div class="d-flex justify-content-between align-items-center">
+                <h2>
+                    <i class="bi bi-robot"></i> AI MODEL
+                </h2>
 
-                    <div>
+                <hr>
 
-                        <h1 class="display-3 fw-bold">
+                <h6>Accuracy</h6>
+                <h3 class="fw-bold">{{ accuracy }}</h3>
 
-                            {{ weather.icon }}
+                <hr>
 
-                            {{ weather.temperature }}°C
+                <h6>Algorithm</h6>
+                <h4>{{ algorithm }}</h4>
 
-                        </h1>
+                <hr>
 
-                        <h3 class="mt-3">
-
-                            {{ city }}
-
-                        </h3>
-
-                        <h5 class="text-info">
-
-                            {{ weather.condition }}
-
-                        </h5>
-
-                        <p class="mt-4">
-
-                            <span class="live-dot"></span>
-
-                            LIVE WEATHER DATA
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <div class="mt-4">
-
-    <button
-        id="detectLocationBtn"
-        class="btn btn-primary btn-lg">
-
-        📍 Detect My Live Location
-
-    </button>
-
-    <p class="text-light mt-3">
-
-        <strong>Location:</strong>
-
-        <span id="currentLocation">
-            Detecting...
-        </span>
-
-    </p>
-
-</div>
+                <h6>Features</h6>
+                <h3>{{ total_features }}</h3>
 
             </div>
 
         </div>
 
-        <!-- AI -->
+    </div>
 
-        <div class="col-lg-4">
+    <!-- ============================================ -->
+    <!-- LIVE LOCATION WEATHER -->
+    <!-- ============================================ -->
 
-<div class="ai-card h-100">
+    <div class="row mb-5">
 
-<h2>
+        <div class="col-lg-12">
 
-                    🤖 AI MODEL
+            <div class="glass-card p-4 shadow-lg">
 
-                </h2>
+                <div class="row align-items-center">
 
-                <hr>
+                    <div class="col-md-8">
 
-                <h6>
+                        <span class="premium-badge">
+                            <i class="bi bi-geo-alt-fill"></i> LIVE AI WEATHER
+                        </span>
 
-                    Accuracy
+                        <h2 class="mt-3">
+                            Detecting Your Current Location...
+                        </h2>
 
-                </h6>
+                        <p class="text-muted">
+                            Real-time GPS • Automatic Weather • AI Prediction
+                        </p>
 
-                <h1>
+                        <h4 id="livePlace" class="mt-4">
+                            <i class="bi bi-geo-alt"></i> Detecting...
+                        </h4>
 
-                    {{ accuracy }}
+                        <p id="liveAccuracy" class="text-secondary">
+                            Please wait...
+                        </p>
 
-                </h1>
-
-                <hr>
-
-                <h6>
-
-                    Algorithm
-
-                </h6>
-
-                <h4>
-
-                    {{ algorithm }}
-
-                </h4>
-
-                <hr>
-
-                <h6>
-
-                    Features
-
-                </h6>
-
-   <h3>
-
-{{ total_features }}
-
-</h3>
-
-</div>
-
-</div>
-<!-- ============================================ -->
-<!-- LIVE LOCATION WEATHER -->
-<!-- ============================================ -->
-
-<div class="row mb-5">
-
-    <div class="col-lg-12">
-
-        <div class="glass-card p-4 shadow-lg">
-
-            <div class="row align-items-center">
-
-                <div class="col-md-8">
-
-                    <span class="premium-badge">
-                        📍 LIVE AI WEATHER
-                    </span>
-
-                    <h2 class="mt-3">
-                        Detecting Your Current Location...
-                    </h2>
-
-                    <p class="text-muted">
-                        Real-time GPS • Automatic Weather • AI Prediction
-                    </p>
-
-                    <h4 id="livePlace" class="mt-4">
-                        📍 Detecting...
-                    </h4>
-
-                    <p id="liveAccuracy" class="text-secondary">
-                        Please wait...
-                    </p>
-
-                </div>
-
-                <div class="col-md-4 text-center">
-
-                    <div id="liveIcon" style="font-size:80px;">
-                        🌍
                     </div>
 
-                    <h1 id="liveTemp" class="mt-3">
-                        --
-                    </h1>
+                    <div class="col-md-4 text-center">
 
-                    <h5 id="livePrediction">
-                        Detecting...
-                    </h5>
+                        <div id="liveIcon" style="font-size:80px;">
+                            <i class="bi bi-cloud"></i>
+                        </div>
+
+                        <h2 id="liveTemp" class="mt-3 fw-bold">--</h2>
+
+                        <h5 id="livePrediction">
+                            Detecting...
+                        </h5>
+
+                    </div>
 
                 </div>
 
@@ -214,65 +115,40 @@
 
     </div>
 
-</div>
     <!-- STATS -->
 
     <div class="row g-4 mb-5">
 
         <div class="col-md-3">
-
             <div class="card stat-card">
-
-                <h1>🌡</h1>
-
+                <h4 class="text-primary"><i class="bi bi-thermometer-half fs-2"></i></h4>
                 <h3>{{ weather.temperature }}°C</h3>
-
                 <p>Temperature</p>
-
             </div>
-
         </div>
 
         <div class="col-md-3">
-
             <div class="card stat-card">
-
-                <h1>💧</h1>
-
+                <h4 class="text-primary"><i class="bi bi-droplet-half fs-2"></i></h4>
                 <h3>{{ weather.humidity }}%</h3>
-
                 <p>Humidity</p>
-
             </div>
-
         </div>
 
         <div class="col-md-3">
-
             <div class="card stat-card">
-
-                <h1>🌬</h1>
-
+                <h4 class="text-primary"><i class="bi bi-wind fs-2"></i></h4>
                 <h3>{{ weather.wind_speed }} km/h</h3>
-
                 <p>Wind Speed</p>
-
             </div>
-
         </div>
 
         <div class="col-md-3">
-
             <div class="card stat-card">
-
-                <h1>🌧</h1>
-
+                <h4 class="text-primary"><i class="bi bi-cloud-rain fs-2"></i></h4>
                 <h3>{{ weather.rain }} mm</h3>
-
                 <p>Rainfall</p>
-
             </div>
-
         </div>
 
     </div>
@@ -280,110 +156,105 @@
     <hr class="my-5">
 
     <h2 class="analytics-title text-center mb-5">
-
-        📊 Weather Analytics
-
+        <i class="bi bi-bar-chart-line"></i> Weather Analytics
     </h2>
-<div class="row">
 
-    <div class="col-md-6 mb-4">
-        <div class="card graph-card">
-            <img src="{{ url_for('static', filename='graphs/temperature_trend.png') }}" class="card-img-top">
-            <div class="card-body text-center">
-                <h5>🌡 Temperature Trend</h5>
-                <p class="text-muted">Temperature variation over time</p>
-            </div>
-        </div>
-    </div>
+    <div class="row">
 
-    <div class="col-md-6 mb-4">
-        <div class="card graph-card">
-            <img src="{{ url_for('static', filename='graphs/rainfall_trend.png') }}" class="card-img-top">
-            <div class="card-body text-center">
-                <h5>🌧 Rainfall Trend</h5>
-                <p class="text-muted">Rainfall analysis</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6 mb-4">
-        <div class="card graph-card">
-            <img src="{{ url_for('static', filename='graphs/wind_speed_trend.png') }}" class="card-img-top">
-            <div class="card-body text-center">
-                <h5>🌬 Wind Speed Trend</h5>
-                <p class="text-muted">Wind speed history</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6 mb-4">
-        <div class="card graph-card">
-            <img src="{{ url_for('static', filename='graphs/temperature_histogram.png') }}" class="card-img-top">
-            <div class="card-body text-center">
-                <h5>📈 Temperature Distribution</h5>
-                <p class="text-muted">Histogram of temperatures</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6 mb-4">
-        <div class="card graph-card">
-            <img src="{{ url_for('static', filename='graphs/confusion_matrix.png') }}" class="card-img-top">
-            <div class="card-body text-center">
-                <h5>🤖 Confusion Matrix</h5>
-                <p class="text-muted">Model prediction performance</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6 mb-4">
-        <div class="card graph-card">
-            <img src="{{ url_for('static', filename='graphs/feature_importance.png') }}" class="card-img-top">
-            <div class="card-body text-center">
-                <h5>⭐ Feature Importance</h5>
-                <p class="text-muted">Most influential weather features</p>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<!-- Quick Summary -->
-
-<div class="row mt-5">
-
-    <div class="col-lg-12">
-
-        <div class="card p-4">
-
-            <h3 class="mb-3">
-                📋 Dashboard Summary
-            </h3>
-
-            <div class="row text-center">
-
-                <div class="col-md-3">
-                    <h2>📊</h2>
-                    <h4>{{ accuracy }}</h4>
-                    <p>Model Accuracy</p>
+        <div class="col-md-6 mb-4">
+            <div class="card graph-card">
+                <img src="{{ url_for('static', filename='graphs/temperature_trend.png') }}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5><i class="bi bi-thermometer-half"></i> Temperature Trend</h5>
+                    <p class="text-muted">Temperature variation over time</p>
                 </div>
+            </div>
+        </div>
 
-                <div class="col-md-3">
-                    <h2>⚙</h2>
-                    <h4>{{ algorithm }}</h4>
-                    <p>Algorithm</p>
+        <div class="col-md-6 mb-4">
+            <div class="card graph-card">
+                <img src="{{ url_for('static', filename='graphs/rainfall_trend.png') }}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5><i class="bi bi-cloud-rain"></i> Rainfall Trend</h5>
+                    <p class="text-muted">Rainfall analysis</p>
                 </div>
+            </div>
+        </div>
 
-                <div class="col-md-3">
-                    <h2>📁</h2>
-                    <h4>{{ total_features }}</h4>
-                    <p>Input Features</p>
+        <div class="col-md-6 mb-4">
+            <div class="card graph-card">
+                <img src="{{ url_for('static', filename='graphs/wind_speed_trend.png') }}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5><i class="bi bi-wind"></i> Wind Speed Trend</h5>
+                    <p class="text-muted">Wind speed history</p>
                 </div>
+            </div>
+        </div>
 
-                <div class="col-md-3">
-                    <h2>🌍</h2>
-                    <h4>{{ city }}</h4>
-                    <p>Current City</p>
+        <div class="col-md-6 mb-4">
+            <div class="card graph-card">
+                <img src="{{ url_for('static', filename='graphs/temperature_histogram.png') }}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5><i class="bi bi-graph-up"></i> Temperature Distribution</h5>
+                    <p class="text-muted">Histogram of temperatures</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card graph-card">
+                <img src="{{ url_for('static', filename='graphs/confusion_matrix.png') }}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5><i class="bi bi-robot"></i> Confusion Matrix</h5>
+                    <p class="text-muted">Model prediction performance</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card graph-card">
+                <img src="{{ url_for('static', filename='graphs/feature_importance.png') }}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5><i class="bi bi-star-fill"></i> Feature Importance</h5>
+                    <p class="text-muted">Most influential weather features</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Quick Summary -->
+
+    <div class="row mt-5">
+
+        <div class="col-lg-12">
+
+            <div class="card p-4">
+
+                <h3 class="mb-3">
+                    <i class="bi bi-clipboard-data"></i> Dashboard Summary
+                </h3>
+
+                <div class="row text-center">
+
+                    <div class="col-md-4">
+                        <i class="bi bi-graph-up fs-2 text-primary"></i>
+                        <h4>{{ accuracy }}</h4>
+                        <p>Model Accuracy</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <i class="bi bi-gear-fill fs-2 text-primary"></i>
+                        <h4>{{ algorithm }}</h4>
+                        <p>Algorithm</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <i class="bi bi-file-earmark-bar-graph fs-2 text-primary"></i>
+                        <h4>{{ total_features }}</h4>
+                        <p>Input Features</p>
+                    </div>
+
                 </div>
 
             </div>
@@ -391,8 +262,6 @@
         </div>
 
     </div>
-
-</div>
 
 </div>
 
@@ -411,48 +280,15 @@ function detectLiveWeather() {
         function(position){
 
             const lat = position.coords.latitude;
-const lon = position.coords.longitude;
+            const lon = position.coords.longitude;
 
-console.log("Latitude:", lat);
-console.log("Longitude:", lon);
-console.log("Accuracy:", position.coords.accuracy);
+            console.log("Latitude:", lat);
+            console.log("Longitude:", lon);
+            console.log("Accuracy:", position.coords.accuracy);
+
             document.getElementById("liveAccuracy").innerHTML =
             "Accuracy : ±" + Math.round(position.coords.accuracy) + " meters";
 
-            // Get exact address
-            fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`)
-
-            .then(r=>r.json())
-
-            .then(place=>{
-
-                const a = place.address;
-
-                const locality =
-                    a.amenity ||
-                    a.building ||
-                    a.road ||
-                    a.neighbourhood ||
-                    a.suburb ||
-                    a.village ||
-                    a.town ||
-                    a.city ||
-                    "Unknown";
-const city =
-    a.city ||
-    a.town ||
-    a.village ||
-    a.municipality ||
-    "";
-
-const state =
-    a.state || "";
-
-document.getElementById("livePlace").innerHTML =
-    "📍 <b>" + city + ", " + state + "</b>";
-            });
-
-            // Get weather
             fetch("/auto_predict",{
 
                 method:"POST",
@@ -474,6 +310,9 @@ document.getElementById("livePlace").innerHTML =
 
             .then(data=>{
 
+                document.getElementById("livePlace").innerHTML =
+                    "<i class='bi bi-geo-alt-fill'></i> <b>" + data.location + "</b>";
+
                 document.getElementById("liveTemp").innerHTML =
                     data.temperature + "°C";
 
@@ -481,7 +320,9 @@ document.getElementById("livePlace").innerHTML =
                     data.result;
 
                 document.getElementById("liveIcon").innerHTML =
-                    data.prediction==1 ? "🌧️" : "☀️";
+                    data.prediction==1
+                        ? "<i class='bi bi-cloud-rain-heavy'></i>"
+                        : "<i class='bi bi-sun'></i>";
 
             });
 
