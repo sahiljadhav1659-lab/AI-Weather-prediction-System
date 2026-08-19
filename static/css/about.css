@@ -2,221 +2,81 @@
    ABOUT PAGE
 ========================================== */
 
-/* HERO */
-
 .about-hero{
-
     text-align:center;
-
     margin-bottom:60px;
-
 }
 
 .about-title{
-
     font-size:58px;
-
     font-weight:700;
-
-    color:#1565ff;
-
 }
 
 .about-subtitle{
-
     font-size:20px;
-
-    color:#64748b;
-
     max-width:800px;
-
-    margin:auto;
-
-    margin-top:15px;
-
+    margin:15px auto 0;
 }
-
-/* SECTION CARD */
 
 .about-card{
-
-    background:rgba(255,255,255,.82);
-
-    backdrop-filter:blur(18px);
-
-    border-radius:28px;
-
     padding:35px;
-
-    box-shadow:0 20px 45px rgba(0,0,0,.10);
-
     height:100%;
-
-    transition:.35s;
-
 }
-
-.about-card:hover{
-
-    transform:translateY(-10px);
-
-    box-shadow:0 30px 60px rgba(21,101,255,.18);
-
-}
-
-/* ICON */
 
 .about-icon{
-
     width:85px;
-
     height:85px;
-
     border-radius:50%;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     margin-bottom:20px;
-
     font-size:38px;
-
     color:white;
-
-    background:linear-gradient(135deg,#1565ff,#42a5f5);
-
-}
-
-/* TITLES */
-
-.about-card h3{
-
-    color:#1565ff;
-
-    font-weight:700;
-
-    margin-bottom:15px;
-
-}
-
-.about-card p,
-.about-card li{
-
-    color:#64748b;
-
-    line-height:1.8;
-
+    background:var(--primary);
 }
 
 .about-card ul{
-
     margin:0;
-
     padding-left:20px;
-
 }
 
-/* STATS */
-
 .about-stats{
-
     margin-top:60px;
-
 }
 
 .stat-box{
-
-    background:white;
-
-    border-radius:22px;
-
     padding:30px;
-
     text-align:center;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
-
 }
 
 .stat-box h2{
-
     font-size:42px;
-
-    color:#1565ff;
-
     font-weight:700;
-
 }
-
-.stat-box p{
-
-    color:#64748b;
-
-    margin:0;
-
-}
-
-/* TECHNOLOGY BADGES */
 
 .tech-badge{
-
     display:inline-block;
-
     margin:8px;
-
     padding:12px 20px;
-
     border-radius:50px;
-
-    background:#eef5ff;
-
-    color:#1565ff;
-
+    background:var(--glass-bg-light);
+    border:1px solid var(--border);
     font-weight:600;
-
 }
 
-/* CTA */
-
 .about-cta{
-
     margin-top:70px;
-
     text-align:center;
-
 }
 
 .about-cta .btn{
-
     margin:10px;
-
     min-width:200px;
-
 }
-
-/* RESPONSIVE */
 
 @media(max-width:768px){
-
-.about-title{
-
-font-size:42px;
-
-}
-
-.about-card{
-
-padding:25px;
-
-}
-
-.stat-box{
-
-margin-bottom:20px;
-
-}
-
+    .about-title{ font-size:42px; }
+    .about-card{ padding:25px; }
+    .stat-box{ margin-bottom:20px; }
 }

@@ -90,21 +90,24 @@ p, span, label, small, td, th, li{
 }
 
 .navbar{
-
     background:rgba(15,12,25,.55);
-
     backdrop-filter:blur(20px);
-
     -webkit-backdrop-filter:blur(20px);
-
     padding:16px 30px;
-
     box-shadow:var(--shadow-sm);
-
     border-bottom:1px solid var(--border);
-
+    position:relative;      /* NEW */
+    z-index:1050;            /* NEW — sits above hero/main content */
 }
 
+.dropdown-menu{
+    background:rgba(20,18,32,.9);
+    backdrop-filter:blur(20px);
+    border:1px solid var(--border);
+    border-radius:16px;
+    box-shadow:var(--shadow-md);
+    z-index:1055;             /* NEW — above navbar itself */
+}
 .navbar-brand{
 
     color:var(--white)!important;
@@ -189,11 +192,10 @@ p, span, label, small, td, th, li{
 ========================== */
 
 .main-content{
-
     min-height:80vh;
-
     padding:40px 0 60px;
-
+    position:relative;
+    z-index:1;               /* NEW — keeps it below navbar's 1050 */
 }
 
 /* ==========================
@@ -255,6 +257,14 @@ p, span, label, small, td, th, li{
 
     color:var(--white);
 
+}
+.ai-card{
+    padding:28px 32px;
+}
+.ai-card h6{
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    font-size:.75rem;
 }
 
 /* Thin divider like the reference design */

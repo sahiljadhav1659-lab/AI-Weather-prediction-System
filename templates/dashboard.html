@@ -24,39 +24,38 @@
 
     </div>
 
-    <!-- AI -->
+    
+<!-- AI -->
+<div class="row g-4 mb-5">
+    <div class="col-lg-12">
+        <div class="ai-card p-4">
 
-    <div class="row g-4 mb-5">
+            <h2 class="mb-4">
+                <i class="bi bi-robot"></i> AI MODEL
+            </h2>
 
-        <div class="col-lg-12">
+            <div class="row text-center g-3">
 
-            <div class="ai-card h-100">
+                <div class="col-md-4">
+                    <h6 class="text-muted mb-1">Accuracy</h6>
+                    <h3 class="fw-bold mb-0">{{ accuracy }}</h3>
+                </div>
 
-                <h2>
-                    <i class="bi bi-robot"></i> AI MODEL
-                </h2>
+                <div class="col-md-4">
+                    <h6 class="text-muted mb-1">Algorithm</h6>
+                    <h4 class="fw-bold mb-0">{{ algorithm }}</h4>
+                </div>
 
-                <hr>
-
-                <h6>Accuracy</h6>
-                <h3 class="fw-bold">{{ accuracy }}</h3>
-
-                <hr>
-
-                <h6>Algorithm</h6>
-                <h4>{{ algorithm }}</h4>
-
-                <hr>
-
-                <h6>Features</h6>
-                <h3>{{ total_features }}</h3>
+                <div class="col-md-4">
+                    <h6 class="text-muted mb-1">Features</h6>
+                    <h3 class="fw-bold mb-0">{{ total_features }}</h3>
+                </div>
 
             </div>
 
         </div>
-
     </div>
-
+</div>
     <!-- ============================================ -->
     <!-- LIVE LOCATION WEATHER -->
     <!-- ============================================ -->

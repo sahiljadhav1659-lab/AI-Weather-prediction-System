@@ -2,230 +2,47 @@
    DASHBOARD PAGE
 ========================================== */
 
-/* HEADER */
-
 .dashboard-title{
     font-size:60px;
     font-weight:700;
-    color:#1565ff;
 }
 
 .dashboard-subtitle{
     font-size:20px;
-    color:#64748b;
 }
 
-/* WEATHER CARD */
-
-.weather-card{
-
-    background:linear-gradient(135deg,#1565ff,#42a5f5);
-
-    color:white;
-
-    padding:40px;
-
-    border-radius:28px;
-
-    box-shadow:0 20px 50px rgba(21,101,255,.35);
-
-}
-
-.weather-card h1,
-.weather-card h2,
-.weather-card h3,
-.weather-card h4,
-.weather-card h5,
-.weather-card p{
-
-    color:white;
-
-}
-
-.weather-card .text-info{
-
-    color:#d6f4ff!important;
-
-}
-
-/* AI CARD */
-
+.weather-card,
 .ai-card{
-
-    background:linear-gradient(135deg,#0f172a,#2563eb);
-
-    color:white;
-
-    padding:35px;
-
-    border-radius:28px;
-
-    box-shadow:0 20px 50px rgba(0,0,0,.25);
-
+    padding:40px;
 }
-
-.ai-card h1,
-.ai-card h2,
-.ai-card h3,
-.ai-card h4,
-.ai-card h5,
-.ai-card h6,
-.ai-card p{
-
-    color:white;
-
-}
-
-.ai-card hr{
-
-    border-color:rgba(255,255,255,.25);
-
-}
-
-/* STATISTICS */
 
 .stat-card{
-
-    background:white;
-
     padding:30px;
-
-    border-radius:22px;
-
     text-align:center;
-
-    box-shadow:0 15px 35px rgba(0,0,0,.08);
-
 }
 
 .stat-card h1{
-
     font-size:50px;
-
 }
-
-.stat-card h3{
-
-    color:#1565ff;
-
-    font-weight:700;
-
-}
-
-.stat-card p{
-
-    color:#64748b;
-
-    margin-top:10px;
-
-}
-
-/* GRAPHS */
 
 .graph-card{
-
-    background:white;
-
-    border-radius:24px;
-
     overflow:hidden;
-
-    box-shadow:0 15px 35px rgba(0,0,0,.10);
-
 }
 
 .graph-card img{
-
     width:100%;
-
     display:block;
-
 }
 
 .graph-card .card-body{
-
     padding:20px;
-
 }
-
-.graph-card h5{
-
-    color:#1565ff;
-
-    font-weight:700;
-
-}
-
-.graph-card p{
-
-    color:#64748b;
-
-}
-
-/* SUMMARY */
 
 .dashboard-summary{
-
-    background:rgba(255,255,255,.75);
-
-    backdrop-filter:blur(18px);
-
-    border-radius:25px;
-
     padding:35px;
-
-    box-shadow:0 20px 45px rgba(0,0,0,.10);
-
 }
-
-.dashboard-summary h3{
-
-    color:#1565ff;
-
-    font-weight:700;
-
-}
-
-.dashboard-summary h4{
-
-    color:#1565ff;
-
-    font-weight:700;
-
-}
-
-.dashboard-summary p{
-
-    color:#64748b;
-
-}
-
-/* ANALYTICS TITLE */
 
 .analytics-title{
-
     font-size:42px;
-
-    color:#1565ff;
-
     font-weight:700;
-
-}
-
-/* LIVE BADGE */
-
-.live-dot{
-
-    width:12px;
-
-    height:12px;
-
-    background:#22c55e;
-
-    display:inline-block;
-
-    border-radius:50%;
-
-    margin-right:8px;
-
 }

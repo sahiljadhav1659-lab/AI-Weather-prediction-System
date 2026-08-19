@@ -4,105 +4,1002 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1">
 
 <title>Reports Center</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
 
-<link rel="stylesheet"
+<link
+rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 
 <style>
 
-body{
-    background:#eef3f9;
+/* =====================================================
+   GENERAL
+   ===================================================== */
+
+body {
+    background: #f4f6f9;
+    color: #212529;
 }
 
-.card{
-    border:none;
-    border-radius:20px;
-    transition:.3s;
-    box-shadow:0 10px 25px rgba(0,0,0,.1);
+.container {
+    max-width: 1200px;
 }
 
-.card:hover{
-    transform:translateY(-8px);
+
+/* =====================================================
+   MAIN TITLE
+   ===================================================== */
+
+.page-header {
+    background: #ffffff;
+    border: 1px solid #e3e7ed;
+    border-radius: 14px;
+    padding: 28px 30px;
+    margin-bottom: 35px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+
+.page-header h1 {
+    color: #212529;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: #6c757d;
+    margin: 0;
+}
+
+
+/* =====================================================
+   GENERAL REPORT CARDS
+   ===================================================== */
+
+.basic-report-card {
+    background: #ffffff;
+    border: 1px solid #e3e7ed;
+    border-radius: 14px;
+    padding: 25px;
+    height: 100%;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.basic-report-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.08);
+}
+
+.basic-report-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.basic-report-card p {
+    color: #6c757d;
+    font-size: 14px;
+    min-height: 42px;
+}
+
+
+/* =====================================================
+   SECTION HEADER
+   ===================================================== */
+
+.section-header {
+    border-left: 4px solid #0d6efd;
+    padding-left: 18px;
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 6px;
+}
+
+.section-subtitle {
+    color: #6c757d;
+    margin: 0;
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   WEATHER ANALYTICS SECTION
+   ===================================================== */
+
+.reports-section {
+    margin-top: 50px;
+}
+
+
+/* =====================================================
+   ANALYTICS REPORT CARD
+   ===================================================== */
+
+.report-card {
+    background: #ffffff;
+
+    border: 1px solid #e3e7ed;
+
+    border-radius: 14px;
+
+    padding: 24px;
+
+    height: 100%;
+
+    display: flex;
+
+    gap: 18px;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+}
+
+.report-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: #cfd8e3;
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.08);
+}
+
+
+/* =====================================================
+   REPORT ICON
+   ===================================================== */
+
+.report-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    min-width: 52px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 22px;
+
+    font-weight: 600;
+}
+
+
+/* ICON COLORS */
+
+.report-icon.monthly {
+
+    background: #e8f1ff;
+
+    color: #0d6efd;
+}
+
+.report-icon.weekly {
+
+    background: #eef0ff;
+
+    color: #4f46e5;
+}
+
+.report-icon.daily {
+
+    background: #edf7f1;
+
+    color: #198754;
+}
+
+.report-icon.highest {
+
+    background: #fff0f0;
+
+    color: #dc3545;
+}
+
+.report-icon.lowest {
+
+    background: #eef6ff;
+
+    color: #0d6efd;
+}
+
+
+/* =====================================================
+   REPORT CONTENT
+   ===================================================== */
+
+.report-content {
+    flex: 1;
+}
+
+.report-category {
+
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: .7px;
+
+    color: #6c757d;
+
+    margin-bottom: 6px;
+}
+
+.report-content h5 {
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    color: #212529;
+
+    margin-bottom: 8px;
+}
+
+.report-content p {
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    color: #6c757d;
+
+    margin-bottom: 18px;
+}
+
+
+/* =====================================================
+   REPORT BUTTON
+   ===================================================== */
+
+.report-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #0d6efd;
+
+    transition: gap .2s ease;
+}
+
+.report-btn span {
+
+    font-size: 18px;
+}
+
+.report-btn:hover {
+
+    gap: 12px;
+
+    color: #084298;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+   ===================================================== */
+
+.back-section {
+    margin-top: 45px;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+
+    padding: 10px 22px;
+
+    border-radius: 8px;
+
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 576px) {
+
+    .page-header {
+        padding: 22px;
+    }
+
+    .section-title {
+        font-size: 23px;
+    }
+
+    .report-card {
+        padding: 20px;
+    }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
+
 
 <div class="container py-5">
 
-<h1 class="text-center text-primary mb-5">
 
-📄 Reports Center
+    <!-- =================================================
+         PAGE HEADER
+         ================================================= -->
 
-</h1>
+    <div class="page-header">
 
-<div class="row g-4">
+        <h1>
+            📄 Reports Center
+        </h1>
 
-<div class="col-md-6">
-<div class="card p-4">
-<h3>📕 Prediction Report</h3>
-<p>Download the latest AI weather prediction report.</p>
-<a href="/download_prediction_pdf" class="btn btn-danger">Download PDF</a>
-</div>
+        <p>
+            Generate, review and manage weather prediction
+            and analytics reports.
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         GENERAL REPORTS
+         ================================================= -->
+
+    <div class="row g-4">
+
+
+        <!-- Prediction Report -->
+
+        <div class="col-lg-6 col-md-6">
+
+            <div class="basic-report-card">
+
+                <h3>
+                    📕 Prediction Report
+                </h3>
+
+                <p>
+                    Download the latest AI weather
+                    prediction report.
+                </p>
+
+                <a
+                    href="/download_prediction_pdf"
+                    class="btn btn-danger">
+
+                    Download PDF
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Prediction History -->
+
+        <div class="col-lg-6 col-md-6">
+
+            <div class="basic-report-card">
+
+                <h3>
+                    📗 Prediction History
+                </h3>
+
+                <p>
+                    Download all weather prediction
+                    history as a PDF report.
+                </p>
+
+                <a
+                    href="/history_pdf"
+                    class="btn btn-success">
+
+                    Download History PDF
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Export CSV -->
+
+        <div class="col-lg-6 col-md-6">
+
+            <div class="basic-report-card">
+
+                <h3>
+                    📊 Export CSV
+                </h3>
+
+                <p>
+                    Export all prediction records
+                    into CSV format.
+                </p>
+
+                <a
+                    href="/export_csv"
+                    class="btn btn-primary">
+
+                    Export CSV
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Monthly Report -->
+
+        <div class="col-lg-6 col-md-6">
+
+            <div class="basic-report-card">
+
+                <h3>
+                    📈 Monthly Report
+                </h3>
+
+                <p>
+                    Generate monthly weather
+                    statistics.
+                </p>
+
+                <a
+                    href="/monthly-report"
+                    class="btn btn-warning">
+
+                    Generate Report
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- User Report -->
+
+        <div class="col-lg-6 col-md-6">
+
+            <div class="basic-report-card">
+
+                <h3>
+                    👥 User Report
+                </h3>
+
+                <p>
+                    View registered users and
+                    their account information.
+                </p>
+
+                <a
+                    href="/admin/user-report"
+                    class="btn btn-info">
+
+                    View User Report
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         WEATHER ANALYTICS
+         ================================================= -->
+
+    <div class="reports-section">
+
+
+        <div class="section-header">
+
+            <h2 class="section-title">
+
+                Weather Analytics Reports
+
+            </h2>
+
+            <p class="section-subtitle">
+
+                Review temperature trends and statistical
+                summaries across monthly, weekly and
+                daily periods.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="row g-4">
+
+
+            <!-- =========================================
+                 MONTHLY AVERAGE
+                 ========================================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="report-card">
+
+                    <div class="report-icon monthly">
+                        📅
+                    </div>
+
+                    <div class="report-content">
+
+                        <span class="report-category">
+                            MONTHLY ANALYSIS
+                        </span>
+
+                        <h5>
+                            Monthly Average Temperature
+                        </h5>
+
+                        <p>
+                            Analyse the average temperature
+                            recorded for each month.
+                        </p>
+
+                        <a
+                            href="/admin/reports/monthly-avg"
+                            class="report-btn">
+
+                            View Report
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 MONTHLY HIGHEST
+                 ========================================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="report-card">
+
+                    <div class="report-icon highest">
+                        ↑
+                    </div>
+
+                    <div class="report-content">
+
+                        <span class="report-category">
+                            MONTHLY ANALYSIS
+                        </span>
+
+                        <h5>
+                            Monthly Highest Temperature
+                        </h5>
+
+                        <p>
+                            Identify the highest temperature
+                            recorded during each month.
+                        </p>
+
+                        <a
+                            href="/admin/reports/monthly-highest"
+                            class="report-btn">
+
+                            View Report
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 MONTHLY LOWEST
+                 ========================================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="report-card">
+
+                    <div class="report-icon lowest">
+                        ↓
+                    </div>
+
+                    <div class="report-content">
+
+                        <span class="report-category">
+                            MONTHLY ANALYSIS
+                        </span>
+
+                        <h5>
+                            Monthly Lowest Temperature
+                        </h5>
+
+                        <p>
+                            Review the lowest temperature
+                            recorded during each month.
+                        </p>
+
+                        <a
+                            href="/admin/reports/monthly-lowest"
+                            class="report-btn">
+
+                            View Report
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 WEEKLY AVERAGE
+                 ========================================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="report-card">
+
+                    <div class="report-icon weekly">
+                        📊
+                    </div>
+
+                    <div class="report-content">
+
+                        <span class="report-category">
+                            WEEKLY ANALYSIS
+                        </span>
+
+                        <h5>
+                            Weekly Average Temperature
+                        </h5>
+
+                        <p>
+                            Analyse average temperature
+                            trends on a weekly basis.
+                        </p>
+
+                        <a
+                            href="/admin/reports/weekly-avg"
+                            class="report-btn">
+
+                            View Report
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 WEEKLY HIGHEST
+                 ========================================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="report-card">
+
+                    <div class="report-icon highest">
+                        ↑
+                    </div>
+
+                    <div class="report-content">
+
+                        <span class="report-category">
+                            WEEKLY ANALYSIS
+                        </span>
+
+                        <h5>
+                            Weekly Highest Temperature
+                        </h5>
+
+                        <p>
+                            Compare the highest recorded
+                            temperature for each week.
+                        </p>
+
+                        <a
+                            href="/admin/reports/weekly-highest"
+                            class="report-btn">
+
+                            View Report
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 WEEKLY LOWEST
+                 ========================================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="report-card">
+
+                    <div class="report-icon lowest">
+                        ↓
+                    </div>
+
+                    <div class="report-content">
+
+                        <span class="report-category">
+                            WEEKLY ANALYSIS
+                        </span>
+
+                        <h5>
+                            Weekly Lowest Temperature
+                        </h5>
+
+                        <p>
+                            Review the lowest recorded
+                            temperature for each week.
+                        </p>
+
+                        <a
+                            href="/admin/reports/weekly-lowest"
+                            class="report-btn">
+
+                            View Report
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 DAILY AVERAGE
+                 ========================================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="report-card">
+
+                    <div class="report-icon daily">
+                        📋
+                    </div>
+
+                    <div class="report-content">
+
+                        <span class="report-category">
+                            DAILY ANALYSIS
+                        </span>
+
+                        <h5>
+                            Daily Average Temperature
+                        </h5>
+
+                        <p>
+                            View daily average temperature
+                            across recorded weather data.
+                        </p>
+
+                        <a
+                            href="/admin/reports/daily-avg"
+                            class="report-btn">
+
+                            View Report
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 DAILY HIGHEST
+                 ========================================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="report-card">
+
+                    <div class="report-icon highest">
+                        ↑
+                    </div>
+
+                    <div class="report-content">
+
+                        <span class="report-category">
+                            DAILY ANALYSIS
+                        </span>
+
+                        <h5>
+                            Daily Highest Temperature
+                        </h5>
+
+                        <p>
+                            Identify the highest temperature
+                            recorded for each day.
+                        </p>
+
+                        <a
+                            href="/admin/reports/daily-highest"
+                            class="report-btn">
+
+                            View Report
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 DAILY LOWEST
+                 ========================================= -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="report-card">
+
+                    <div class="report-icon lowest">
+                        ↓
+                    </div>
+
+                    <div class="report-content">
+
+                        <span class="report-category">
+                            DAILY ANALYSIS
+                        </span>
+
+                        <h5>
+                            Daily Lowest Temperature
+                        </h5>
+
+                        <p>
+                            Review the lowest temperature
+                            recorded for each day.
+                        </p>
+
+                        <a
+                            href="/admin/reports/daily-lowest"
+                            class="report-btn">
+
+                            View Report
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         BACK TO DASHBOARD
+         ================================================= -->
+
+    <div class="text-center back-section">
+
+        <a
+            href="/admin/dashboard"
+            class="btn btn-dark btn-lg back-btn">
+
+            ← Back to Dashboard
+
+        </a>
+
+    </div>
+
+
 </div>
 
-<div class="col-md-6">
-<div class="card p-4">
-<h3>📗 Prediction History</h3>
-<p>Download all prediction history as PDF.</p>
-<a href="/history_pdf" class="btn btn-success">Download History PDF</a>
-</div>
-</div>
 
-<div class="col-md-6">
-<div class="card p-4">
-<h3>📊 Export CSV</h3>
-<p>Export all prediction records into CSV.</p>
-<a href="/export_csv" class="btn btn-primary">Export CSV</a>
-</div>
-</div>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
 
-<div class="col-md-6">
-<div class="card p-4">
-<h3>📈 Monthly Report</h3>
-<p>Generate monthly weather statistics.</p>
-<a href="/monthly-report" class="btn btn-warning">Generate Report</a>
-</div>
-</div>
-
-<div class="col-md-6">
-<div class="card p-4">
-<h3>👥 User Report</h3>
-<p>View all registered users and their account details.</p>
-<a href="/admin/user-report" class="btn btn-info">View User Report</a>
-</div>
-</div>
-
-<div class="col-md-6">
-<div class="card p-4">
-<h3>🌦 Weather Analytics</h3>
-<p>Daily, weekly, monthly averages and highest/lowest temperature.</p>
-<a href="/admin/weather-analytics" class="btn btn-dark">View Analytics</a>
-</div>
-</div>
-
-</div>
-
-<div class="text-center mt-5">
-<a href="/admin/dashboard" class="btn btn-dark btn-lg">
-⬅ Back to Dashboard
-</a>
-</div>
-
-</div>
 
 </body>
+
 </html>

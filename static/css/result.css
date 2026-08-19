@@ -2,218 +2,76 @@
    RESULT PAGE
 ========================================== */
 
-/* RESULT CONTAINER */
-
 .result-card{
-
-    background:rgba(255,255,255,.82);
-
-    backdrop-filter:blur(20px);
-
-    border-radius:30px;
-
     padding:55px;
-
-    box-shadow:0 20px 45px rgba(0,0,0,.12);
-
 }
-
-/* RESULT ICON */
 
 .result-icon{
-
     font-size:120px;
-
     text-align:center;
-
     margin-bottom:25px;
-
 }
 
-/* PREDICTION */
-
 .prediction-result{
-
     font-size:42px;
-
     font-weight:700;
-
-    color:#1565ff;
-
     text-align:center;
-
 }
 
 .result-subtitle{
-
-    color:#64748b;
-
     text-align:center;
-
     font-size:18px;
-
     margin-bottom:35px;
-
 }
-
-/* CONFIDENCE */
 
 .confidence-box{
-
-    background:#f8fbff;
-
-    border-radius:20px;
-
     padding:30px;
-
     margin-top:35px;
-
-}
-
-.confidence-box h4{
-
-    color:#1565ff;
-
-    font-weight:700;
-
 }
 
 .progress{
-
     height:26px;
-
     border-radius:30px;
-
     overflow:hidden;
-
     margin-top:18px;
-
 }
 
 .progress-bar{
-
     font-size:15px;
-
     font-weight:700;
-
 }
-
-/* ANALYSIS */
 
 .analysis-card{
-
-    background:white;
-
-    border-radius:22px;
-
     padding:25px;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
-
     height:100%;
-
 }
-
-.analysis-card h5{
-
-    color:#1565ff;
-
-    font-weight:700;
-
-}
-
-.analysis-card p{
-
-    color:#64748b;
-
-}
-
-/* MINI CARDS */
 
 .mini-card{
-
-    background:#f8fbff;
-
-    border-radius:18px;
-
     padding:20px;
-
     text-align:center;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.06);
-
 }
-
-.mini-card h3{
-
-    color:#1565ff;
-
-    font-weight:700;
-
-}
-
-.mini-card p{
-
-    color:#64748b;
-
-}
-
-/* BUTTONS */
 
 .result-actions{
-
     margin-top:45px;
-
     text-align:center;
-
 }
 
 .result-actions .btn{
-
     margin:10px;
-
     min-width:180px;
-
 }
-
-/* BADGES */
 
 .result-badge{
-
     display:inline-block;
-
     padding:10px 24px;
-
     border-radius:50px;
-
-    background:#dbeafe;
-
-    color:#1565ff;
-
+    background:var(--glass-bg-light);
+    border:1px solid var(--border);
     font-weight:700;
-
 }
-
-/* RESPONSIVE */
 
 @media(max-width:768px){
-
-.result-card{
-
-padding:30px;
-
-}
-
-.prediction-result{
-
-font-size:32px;
-
-}
-
-.result-icon{
-
-font-size:90px;
-
-}
-
+    .result-card{ padding:30px; }
+    .prediction-result{ font-size:32px; }
+    .result-icon{ font-size:90px; }
 }
