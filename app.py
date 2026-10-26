@@ -96,6 +96,9 @@ def dashboard():
 # ==================================================
 # PREDICTION PAGE
 # ==================================================
+# ==================================================
+# PREDICTION PAGE
+# ==================================================
 @app.route("/prediction")
 def prediction():
 
@@ -103,6 +106,7 @@ def prediction():
         return redirect("/login")
 
     return render_template("prediction.html")
+
 
 # ==================================================
 # PREDICT (Form Submission)
@@ -134,6 +138,21 @@ def predict():
             "weather_code": [weather_code]
         })
 
+        # Season Detection
+        month = datetime.now().month
+
+        if month in [3, 4, 5]:
+            season = "Summer"
+        elif month in [6, 7, 8, 9]:
+            season = "Monsoon"
+        elif month == 10:
+            season = "Post-Monsoon"
+        else:
+            season = "Winter"
+
+        current_date_display = datetime.now().strftime("%d-%m-%Y")
+
+        # AI Prediction
         result = model.predict(input_data)
 
         if result[0] == 1:
@@ -141,7 +160,7 @@ def predict():
         else:
             prediction_text = "No Rain Expected"
 
-        # FIXED: save in YYYY-MM-DD to match existing database records
+        # Save Prediction
         current_date = datetime.now().strftime("%Y-%m-%d")
         current_time = datetime.now().strftime("%I:%M %p")
 
@@ -163,16 +182,20 @@ def predict():
             prediction=prediction_text,
             temperature=temperature_2m_max,
             wind_speed=wind_speed_10m_max,
-            rainfall=precipitation_sum
+            rainfall=precipitation_sum,
+            season=season,
+            current_date=current_date_display
         )
 
     except Exception as e:
         return f"Error during prediction: {e}"
-
 # ==================================================
 # QUICK PREDICTION PAGE
 # ==================================================
-@app.route("/quick_prediction", methods=["GET","POST"])
+# ==================================================
+# QUICK PREDICTION PAGE
+# ==================================================
+@app.route("/quick_prediction", methods=["GET", "POST"])
 def quick_prediction():
 
     if "user_id" not in session:
@@ -191,15 +214,15 @@ def quick_prediction():
 
         if humidity >= 80 and temperature <= 30:
             prediction = "Rain Expected"
-            icon = "🌧"
+            icon = "🌧️"
 
         elif humidity <= 40 and temperature >= 32:
             prediction = "Sunny"
-            icon = "☀"
+            icon = "☀️"
 
         elif humidity >= 60:
             prediction = "Cloudy"
-            icon = "☁"
+            icon = "☁️"
 
         else:
             prediction = "Partly Cloudy"
@@ -213,7 +236,6 @@ def quick_prediction():
         current_date=current_date,
         current_time=current_time
     )
-
 # ==================================================
 # HISTORY PDF
 # ==================================================
