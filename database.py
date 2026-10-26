@@ -1,7 +1,19 @@
 import sqlite3
-
 import os
+
+# ---------------- DATABASE PATH ----------------
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATABASE_DIR = os.path.join(BASE_DIR, "database")
+
+# Create database folder if it doesn't exist
+os.makedirs(DATABASE_DIR, exist_ok=True)
+
+DATABASE = os.path.join(DATABASE_DIR, "weather.db")
+
+
 # ---------------- CREATE TABLE ----------------
+
 def create_table():
 
     conn = sqlite3.connect(DATABASE)
@@ -52,8 +64,10 @@ def create_table():
 
     conn.commit()
     conn.close()
-#
+
+
 # ---------------- INSERT PREDICTION ----------------
+
 def insert_prediction(
     prediction_date,
     prediction_time,
@@ -69,7 +83,6 @@ def insert_prediction(
     cursor = conn.cursor()
 
     cursor.execute("""
-
     INSERT INTO prediction_history(
 
         prediction_date,
@@ -86,7 +99,6 @@ def insert_prediction(
     VALUES(?,?,?,?,?,?,?,?)
 
     """, (
-
         prediction_date,
         prediction_time,
         city,
@@ -95,7 +107,6 @@ def insert_prediction(
         wind_speed,
         rainfall,
         prediction
-
     ))
 
     conn.commit()
@@ -103,6 +114,7 @@ def insert_prediction(
 
 
 # ---------------- GET ALL PREDICTIONS ----------------
+
 def get_all_predictions():
 
     conn = sqlite3.connect(DATABASE)
@@ -119,12 +131,16 @@ def get_all_predictions():
     conn.close()
 
     return records
+
+
 # ---------------- REGISTER USER ----------------
+
 def register_user(full_name, email, password):
 
     conn = sqlite3.connect(DATABASE, timeout=10)
 
     try:
+
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -133,16 +149,20 @@ def register_user(full_name, email, password):
         """, (full_name, email, password))
 
         conn.commit()
+
         return True
 
     except sqlite3.IntegrityError:
+
         return False
 
     finally:
+
         conn.close()
 
 
 # ---------------- LOGIN USER ----------------
+
 def login_user(email, password):
 
     conn = sqlite3.connect(DATABASE)
@@ -159,7 +179,10 @@ def login_user(email, password):
     conn.close()
 
     return user
+
+
 # ---------------- GET ALL USERS ----------------
+
 def get_all_users():
 
     conn = sqlite3.connect(DATABASE)
@@ -176,12 +199,16 @@ def get_all_users():
     conn.close()
 
     return users
+
+
 # ---------------- ADD ADMIN ----------------
+
 def add_admin(username, password):
 
     conn = sqlite3.connect(DATABASE)
 
     try:
+
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -190,10 +217,13 @@ def add_admin(username, password):
         """, (username, password))
 
         conn.commit()
+
         return True
 
     except sqlite3.IntegrityError:
+
         return False
 
     finally:
+
         conn.close()
