@@ -1,7 +1,6 @@
 import sqlite3
 
-DATABASE = "database/weather.db"
-
+import os
 # ---------------- CREATE TABLE ----------------
 def create_table():
 
